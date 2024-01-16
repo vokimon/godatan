@@ -1,2 +1,3 @@
-# godatan
-Catan gameplay in Godot (Exercise)
+# Godatan
+
+Catan gameplay in Godot (Learning Exercise)
