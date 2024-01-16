@@ -103,6 +103,14 @@ const game = {
 				Terrain.Mud,
 				Terrain.Sea,
 			],
+			"numbers": [
+				6,5,4,3,2,
+				8,9,10,11,12,
+			],
+			"unnumbered": [
+				Terrain.Desert,
+				Terrain.Sea,
+			]
 		},
 		"land": {
 			"shuffled": true,
@@ -128,9 +136,12 @@ const game = {
 				Terrain.Mud,
 			],
 			"numbers": [
-				6,6,6,5,5,4,4,3,3,2,
-				8,8,8,9,9,10,10,11,11,12,
+				6,6,5,5,4,4,3,3,2,
+				8,8,9,9,10,10,11,11,12,
 			],
+			"unnumbered": [
+				Terrain.Desert,
+			]
 		}
 	}
 }
@@ -145,29 +156,36 @@ func tile2world(x,y):
 		y * (tile_heigth + tile_margin) - x * (tile_heigth / 2 + tile_margin / 2),
 	)
 
-func _ready():
-	var decks = {}
-	var deck_numbers = {}
+var terrain_decks = {}
+var deck_numbers = {}
+func shuffle_decks():
 	for deck_name in game.decks:
-		decks[deck_name] = game.decks[deck_name].tiles.duplicate()
-		var shuffled = game.decks[deck_name].get('shuffled', false)
-		if shuffled: decks[deck_name].shuffle()
-		deck_numbers[deck_name] = game.decks[deck_name].get('numbers',[]).duplicate()
+		var current_deck = game.decks[deck_name]
+		terrain_decks[deck_name] = current_deck.tiles.duplicate()
+		var shuffled = current_deck.get('shuffled', false)
+		if shuffled: terrain_decks[deck_name].shuffle()
+		deck_numbers[deck_name] = current_deck.get('numbers',[]).duplicate()
 		if shuffled: deck_numbers[deck_name].shuffle()
 
-	for tile in game.map:
-		var x: int = tile[0]
-		var y: int = tile[1]
-		var deck_name: String = tile[2]
-		var tile_instance = TileScene.instantiate()
-		tile_instance.position = tile2world(x,y)
-		var terrain =  decks[deck_name].pop_back()
+
+func _ready():
+	shuffle_decks()
+	for tile_data in game.map:
+		var x: int = tile_data[0]
+		var y: int = tile_data[1]
+		var deck_name: String = tile_data[2]
+		var tile = TileScene.instantiate()
+		tile.position = tile2world(x,y)
+		var terrain =  terrain_decks[deck_name].pop_back()
 		if terrain == null: terrain = Globals.Terrain.Desert
-		tile_instance.terrain = terrain
-		tile_instance.explored = not game.decks[deck_name].get('hidden', false)
-		var number = deck_numbers[deck_name].pop_back()
-		tile_instance.dice_value = number if number != null else 0
-		add_child(tile_instance)
+		tile.terrain = terrain
+		tile.explored = not game.decks[deck_name].get('hidden', false)
+		if tile.terrain in game.decks[deck_name].get('unnumbered', []):
+			tile.dice_value = 0
+		else:
+			var number = deck_numbers[deck_name].pop_back()
+			tile.dice_value = number if number != null else 0
+		add_child(tile)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
