@@ -2,7 +2,6 @@ extends Node2D
 const TileScene = preload("res://tile.tscn")
 const Terrain = Globals.Terrain
 const game = {
-	"name": "clasic, 4 players",
 	"map": [
 		# hex-x, hex-y, deck
 		[-3, -3, "sea"],
@@ -153,7 +152,7 @@ const tile_margin = 1
 func tile2world(x,y):
 	return Vector2(
 		x * (tile_width * 0.75 + tile_margin),
-		y * (tile_heigth + tile_margin) - x * (tile_heigth / 2 + tile_margin / 2),
+		y * (tile_heigth + tile_margin) - x * (tile_heigth / 2. + tile_margin / 2.),
 	)
 
 var terrain_decks = {}
@@ -187,6 +186,5 @@ func _ready():
 			tile.dice_value = number if number != null else 0
 		add_child(tile)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

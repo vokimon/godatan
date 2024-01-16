@@ -35,7 +35,6 @@ func update_texture():
 	$Picture.texture_offset = Vector2(randi_range(0,200), randi_range(0,200))
 
 func flip():
-	print("starting flipping")
 	$FlipAnimation.play("flipout")
 
 func flip_apply():
@@ -46,10 +45,9 @@ func flip_apply():
 	update_texture()
 
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.is_released():
-			print("flipping")
 			flip()
 
 func _on_mouse_entered():

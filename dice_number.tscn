@@ -1,11 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bue0minquvry"]
+[gd_scene load_steps=2 format=3 uid="uid://bue0minquvry"]
 
 [ext_resource type="Script" path="res://dice_number.gd" id="1_oogsf"]
-[ext_resource type="LabelSettings" uid="uid://bu8lv3hgqfmdw" path="res://label_settings_dice_number_normal.tres" id="2_0etkr"]
 
 [node name="DiceNumber" type="Sprite2D"]
 script = ExtResource("1_oogsf")
-dice_number = 4
+dice_number = 5
 
 [node name="Number" type="Label" parent="."]
 anchors_preset = 8
@@ -14,16 +13,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -40.0
+offset_top = -15.5
 offset_right = 20.0
-offset_bottom = 60.0
+offset_bottom = 33.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 14
 text = "4
 ˙˙˙˙"
-label_settings = ExtResource("2_0etkr")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
