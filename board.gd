@@ -189,6 +189,8 @@ func deal_decks():
 			var number = deck_numbers[deck_name].pop_back()
 			tile.dice_value = number if number != null else 0
 		add_child(tile)
+		if shuffled_deck and not hidden_deck:
+			tile.flip()
 
 func _ready():
 	shuffle_decks()
