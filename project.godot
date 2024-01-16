@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Cingara"
+run/main_scene="res://tile_map.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://Globals.gd"
 
 [rendering]
 

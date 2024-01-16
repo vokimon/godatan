@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbl0bydim321g"]
+
+[ext_resource type="Script" path="res://tile.gd" id="1_xkbg4"]
+[ext_resource type="PackedScene" uid="uid://bue0minquvry" path="res://dice_number.tscn" id="3_2d87j"]
+[ext_resource type="PackedScene" uid="uid://cnpicxrr1lbxq" path="res://edge_interactor.tscn" id="3_ukn58"]
+
+[node name="Tile" type="RigidBody2D"]
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("1_xkbg4")
+
+[node name="Picture" type="Polygon2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-1, 0)
+texture_offset = Vector2(4, 0)
+texture_scale = Vector2(1.3, 1.3)
+polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6, -100, 0)
+
+[node name="Border" type="Polygon2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-2, 0)
+color = Color(1, 1, 1, 0.133333)
+texture_offset = Vector2(4, 0)
+texture_scale = Vector2(1.3, 1.3)
+polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6, -100, 0)
+
+[node name="BodyCollision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6, -100, 0)
+
+[node name="EdgeBottomLeft" parent="." instance=ExtResource("3_ukn58")]
+rotation = 1.0472
+
+[node name="EdgeBottom" parent="." instance=ExtResource("3_ukn58")]
+
+[node name="EdgeTopLeft" parent="." instance=ExtResource("3_ukn58")]
+rotation = 2.0944
+
+[node name="EdgeBottomRight" parent="." instance=ExtResource("3_ukn58")]
+rotation = -1.0472
+
+[node name="EdgeTopRight" parent="." instance=ExtResource("3_ukn58")]
+rotation = -2.0944
+
+[node name="EdgeTop" parent="." instance=ExtResource("3_ukn58")]
+rotation = 3.14159
+
+[node name="DiceNumber" parent="." instance=ExtResource("3_2d87j")]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
