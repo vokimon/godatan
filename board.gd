@@ -157,6 +157,7 @@ func tile2world(x,y):
 
 var terrain_decks = {}
 var deck_numbers = {}
+
 func shuffle_decks():
 	for deck_name in game.decks:
 		var current_deck = game.decks[deck_name]
@@ -166,25 +167,32 @@ func shuffle_decks():
 		deck_numbers[deck_name] = current_deck.get('numbers',[]).duplicate()
 		if shuffled: deck_numbers[deck_name].shuffle()
 
-
-func _ready():
-	shuffle_decks()
+func deal_decks():
 	for tile_data in game.map:
 		var x: int = tile_data[0]
 		var y: int = tile_data[1]
 		var deck_name: String = tile_data[2]
+		var current_deck = game.decks[deck_name]
 		var tile = TileScene.instantiate()
 		tile.position = tile2world(x,y)
 		var terrain =  terrain_decks[deck_name].pop_back()
-		if terrain == null: terrain = Globals.Terrain.Desert
+		var hidden_deck = current_deck.get('hidden', false)
+		var shuffled_deck = current_deck.get('shuffled', false)
+		var unnumberedTerrains = current_deck.get('unnumbered', [])
+		if terrain == null:
+			terrain = Globals.Terrain.Desert
 		tile.terrain = terrain
-		tile.explored = not game.decks[deck_name].get('hidden', false)
-		if tile.terrain in game.decks[deck_name].get('unnumbered', []):
+		tile.explored = not hidden_deck and not shuffled_deck
+		if tile.terrain in unnumberedTerrains:
 			tile.dice_value = 0
 		else:
 			var number = deck_numbers[deck_name].pop_back()
 			tile.dice_value = number if number != null else 0
 		add_child(tile)
+
+func _ready():
+	shuffle_decks()
+	deal_decks()
 
 func _process(_delta):
 	pass
