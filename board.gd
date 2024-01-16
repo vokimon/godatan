@@ -158,6 +158,9 @@ func tile2world(x,y):
 var terrain_decks = {}
 var deck_numbers = {}
 
+func dice_rolled(value):
+	get_tree().call_group("tiles", "on_dice_rolled", value)
+
 func shuffle_decks():
 	for deck_name in game.decks:
 		var current_deck = game.decks[deck_name]

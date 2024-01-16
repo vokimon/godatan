@@ -7,6 +7,9 @@ const ZOOM_MAX = 4.0
 var panning := false
 var zoom_level := 0.5
 
+func emulate_dice(value):
+	get_parent().dice_rolled(value)
+
 func _ready():
 	zoom = zoom_level * Vector2.ONE
 
@@ -37,3 +40,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			global_position -= event.relative / zoom_level
 		else:
 			panning = false
+		return
+	if event is InputEventKey:
+		if event.pressed == false: return
+		match event.keycode:
+			KEY_1: emulate_dice(2)
+			KEY_2: emulate_dice(3)
+			KEY_3: emulate_dice(4)
+			KEY_4: emulate_dice(5)
+			KEY_5: emulate_dice(6)
+			KEY_6: emulate_dice(8)
+			KEY_7: emulate_dice(9)
+			KEY_8: emulate_dice(10)
+			KEY_9: emulate_dice(11)
+			KEY_0: emulate_dice(12)
+			KEY_PLUS: emulate_dice(7)

@@ -1,8 +1,13 @@
 extends Node2D
+@export var highlighted: bool = false:
+	set(value):
+		highlighted = value
+		queue_redraw()
 @export var dice_number: int = 0:
 	set(value):
 		dice_number = value
 		update_label()
+
 
 static var frequencyStyle = {
 	1: preload("res://label_settings/tile_number_freq1.tres"),
@@ -26,10 +31,8 @@ func update_label():
 	$Number.label_settings = frequencyStyle.get(frequency)
 
 func _draw():
-	if dice_number not in [2,3,4,5,6,8,9,10,11,12]: return
-	var last_trown = dice_number == 5
-	draw_circle(Vector2.ZERO, 40, Color.DARK_GOLDENROD if last_trown else Color.BURLYWOOD )
-	draw_circle(Vector2.ZERO, 36, Color.YELLOW if last_trown else Color.WHEAT)
+	draw_circle(Vector2.ZERO, 40, Color.DARK_GOLDENROD if highlighted else Color.BURLYWOOD )
+	draw_circle(Vector2.ZERO, 36, Color.YELLOW if highlighted else Color.WHEAT)
 
 func _ready():
 	update_label()

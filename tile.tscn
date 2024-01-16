@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbl0bydim321g"]
+[gd_scene load_steps=7 format=3 uid="uid://bbl0bydim321g"]
 
 [ext_resource type="Script" path="res://tile.gd" id="1_xkbg4"]
 [ext_resource type="PackedScene" uid="uid://bue0minquvry" path="res://dice_number.tscn" id="3_2d87j"]
@@ -33,12 +33,28 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_m27dx"]
-_data = {
-"flipout": SubResource("Animation_fjpxj")
+[sub_resource type="Animation" id="Animation_0gx5q"]
+resource_name = "number_glow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DiceNumber:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1.3, 1.3), Vector2(1, 1)]
 }
 
-[node name="Tile" type="RigidBody2D"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m27dx"]
+_data = {
+"flipout": SubResource("Animation_fjpxj"),
+"number_glow": SubResource("Animation_0gx5q")
+}
+
+[node name="Tile" type="RigidBody2D" groups=["tiles"]]
 input_pickable = true
 gravity_scale = 0.0
 script = ExtResource("1_xkbg4")

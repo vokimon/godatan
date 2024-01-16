@@ -19,7 +19,19 @@ var _explored: bool = false
 func terrain_texture(_terrain):
 	return Globals.terrain_texture(_terrain)
 
+func on_dice_rolled(value):
+	if not explored:
+		$DiceNumber.highlighted = false
+		return
+	if value != dice_value:
+		$DiceNumber.highlighted = false
+		return
+	highlight_number( )
+	$DiceNumber.highlighted = true
 	
+
+func highlight_number():
+	$Animator.play('number_glow')
 
 func highlight_body():
 	$Border.visible = true
