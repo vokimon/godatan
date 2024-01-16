@@ -35,10 +35,9 @@ func update_texture():
 	$Picture.texture_offset = Vector2(randi_range(0,200), randi_range(0,200))
 
 func flip():
-	$FlipAnimation.play("flipout")
+	$Animator.play("flipout")
 
 func flip_apply():
-	print("actually flipping")
 	explored = not explored
 	$DiceNumber.dice_number = dice_value
 	$Picture.texture = terrain_texture(terrain)

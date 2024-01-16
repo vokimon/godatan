@@ -84,7 +84,7 @@ rotation = 3.14159
 
 [node name="DiceNumber" parent="." instance=ExtResource("3_2d87j")]
 
-[node name="FlipAnimation" type="AnimationPlayer" parent="."]
+[node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_m27dx")
 }
