@@ -40,8 +40,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			global_position -= event.relative / zoom_level
 		else:
 			panning = false
-		return
 		event_processed()
+		return
 	if event is InputEventKey:
 		if event.pressed == false: return
 		match event.keycode:
