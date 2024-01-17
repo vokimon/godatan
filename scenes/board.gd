@@ -310,7 +310,7 @@ func _input(event):
 				deal_decks()
 				return
 			KEY_ENTER:
-				return focus_cycle()
+				return focus_cycle(true)
 			KEY_ESCAPE:
 				return focus_cycle(false)
 			KEY_UP:
