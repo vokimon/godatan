@@ -175,6 +175,7 @@ func shuffle_decks():
 
 func deal_decks():
 	"""Lays out the shuffled decks over the board"""
+	get_tree().call_group("tiles", "queue_free")
 	for tile_data in game.map:
 		var x: int = tile_data[0]
 		var y: int = tile_data[1]
@@ -205,3 +206,12 @@ func _ready():
 
 func _process(_delta):
 	pass
+
+func _input(event):
+	if event is InputEventKey:
+		if event.is_pressed(): return
+		match event.keycode:
+			KEY_R:
+				shuffle_decks()
+				deal_decks()
+				return
