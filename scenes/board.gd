@@ -157,6 +157,7 @@ func tile2world(x,y):
 
 var terrain_decks = {}
 var deck_numbers = {}
+var board_tiles = {}
 
 func dice_rolled(value):
 	get_tree().call_group("tiles", "on_dice_rolled", value)
@@ -175,10 +176,12 @@ func shuffle_decks():
 
 func deal_decks():
 	"""Lays out the shuffled decks over the board"""
+	board_tiles = {}
 	get_tree().call_group("tiles", "queue_free")
 	for tile_data in game.map:
 		var x: int = tile_data[0]
 		var y: int = tile_data[1]
+		var tile_coords = Vector2i(x,y)
 		var deck_name: String = tile_data[2]
 		var current_deck = game.decks[deck_name]
 		var tile = TileScene.instantiate()
@@ -197,6 +200,7 @@ func deal_decks():
 			var number = deck_numbers[deck_name].pop_back()
 			tile.dice_value = number if number != null else 0
 		add_child(tile)
+		board_tiles[tile_coords] = tile
 		if shuffled_deck and not hidden_deck:
 			tile.flip()
 
