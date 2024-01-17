@@ -79,7 +79,7 @@ const game = {
 				Terrain.Sea,
 				Terrain.Sea,
 				Terrain.Sea,
-
+				# Extension
 				Terrain.Sea,
 				Terrain.Sea,
 				Terrain.Sea,

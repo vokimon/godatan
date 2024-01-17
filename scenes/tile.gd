@@ -16,6 +16,9 @@ const Terrain = Globals.Terrain
 		explored = value
 		update_texture()
 
+func event_processed():
+	get_tree().get_root().set_input_as_handled()
+
 func terrain_texture(_terrain):
 	return Globals.terrain_texture(_terrain)
 
@@ -59,6 +62,8 @@ func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.is_released():
 			flip()
+			event_processed()
+
 
 func _on_mouse_entered():
 	highlight_body()

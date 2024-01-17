@@ -1,5 +1,8 @@
 extends Camera2D
 
+func event_processed():
+	get_tree().get_root().set_input_as_handled()
+
 func _input(event):
 	# Only for testing purposes
 	if not is_current(): return
@@ -9,5 +12,7 @@ func _input(event):
 			MOUSE_BUTTON_LEFT:
 				var new_number = (get_parent().dice_number+1)%13
 				get_parent().dice_number = new_number
+				event_processed()
 			MOUSE_BUTTON_RIGHT:
 				get_parent().highlighted = not get_parent().highlighted
+				event_processed()

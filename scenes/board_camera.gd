@@ -7,14 +7,14 @@ const ZOOM_MAX = 4.0
 var panning := false
 var zoom_level := 0.5
 
+func event_processed():
+	get_tree().get_root().set_input_as_handled()
+
 func emulate_dice(value):
 	get_parent().dice_rolled(value)
 
 func _ready():
 	zoom = zoom_level * Vector2.ONE
-
-func event_processed():
-	get_tree().get_root().set_input_as_handled()
 
 func zoom_step(value):
 	zoom_level = clamp(zoom_level + value * ZOOM_INCREMENT, ZOOM_MIN, ZOOM_MAX)
@@ -36,12 +36,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseMotion:
 		if not panning: return
-		event_processed()
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
 			global_position -= event.relative / zoom_level
 		else:
 			panning = false
 		return
+		event_processed()
 	if event is InputEventKey:
 		if event.pressed == false: return
 		match event.keycode:
@@ -56,3 +56,5 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_9: emulate_dice(11)
 			KEY_0: emulate_dice(12)
 			KEY_PLUS: emulate_dice(7)
+			_: return
+		event_processed()

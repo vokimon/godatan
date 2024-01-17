@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bue0minquvry"]
 
 [ext_resource type="Script" path="res://scenes/dice_number.gd" id="1_oogsf"]
-[ext_resource type="Script" path="res://scenes/dice_number_camera.gd" id="2_5qntu"]
+[ext_resource type="Script" path="res://scenes/dice_number_camera.gd" id="2_fmrlf"]
 
 [node name="DiceNumber" type="Sprite2D"]
 script = ExtResource("1_oogsf")
@@ -31,4 +31,4 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="DiceNumberCamera" type="Camera2D" parent="."]
-script = ExtResource("2_5qntu")
+script = ExtResource("2_fmrlf")
