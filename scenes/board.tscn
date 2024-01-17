@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbqw3yiiuhy3f"]
+[gd_scene load_steps=4 format=3 uid="uid://cbqw3yiiuhy3f"]
 
 [ext_resource type="Script" path="res://scenes/board.gd" id="1_droao"]
 [ext_resource type="Script" path="res://scenes/board_camera.gd" id="2_2sp0w"]
+[ext_resource type="Texture2D" uid="uid://by1kstxkxx1rk" path="res://icon.svg" id="3_xpbfx"]
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_droao")
@@ -9,3 +10,11 @@ script = ExtResource("1_droao")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_2sp0w")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+z_index = 1000
+gizmo_extents = 69.1
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_xpbfx")
