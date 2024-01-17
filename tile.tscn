@@ -59,6 +59,7 @@ input_pickable = true
 gravity_scale = 0.0
 script = ExtResource("1_xkbg4")
 terrain = 1
+dice_value = 6
 
 [node name="Picture" type="Polygon2D" parent="."]
 texture_filter = 1
@@ -99,6 +100,7 @@ rotation = -2.0944
 rotation = 3.14159
 
 [node name="DiceNumber" parent="." instance=ExtResource("3_2d87j")]
+dice_number = 6
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {

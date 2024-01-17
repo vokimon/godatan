@@ -147,7 +147,7 @@ const game = {
 const tile_side = 100
 const tile_width = tile_side * 2
 const tile_heigth = tile_side * sqrt(3) # 173.20
-const tile_margin = 1
+const tile_margin = 0
 
 func tile2world(x,y):
 	return Vector2(
@@ -162,6 +162,7 @@ func dice_rolled(value):
 	get_tree().call_group("tiles", "on_dice_rolled", value)
 
 func shuffle_decks():
+	"""Takes the game template and generates a set of shuffled decks for a game"""
 	for deck_name in game.decks:
 		var current_deck = game.decks[deck_name]
 		terrain_decks[deck_name] = current_deck.tiles.duplicate()
@@ -171,6 +172,7 @@ func shuffle_decks():
 		if shuffled: deck_numbers[deck_name].shuffle()
 
 func deal_decks():
+	"""Lays out the shuffled decks over the board"""
 	for tile_data in game.map:
 		var x: int = tile_data[0]
 		var y: int = tile_data[1]
@@ -183,7 +185,7 @@ func deal_decks():
 		var shuffled_deck = current_deck.get('shuffled', false)
 		var unnumberedTerrains = current_deck.get('unnumbered', [])
 		if terrain == null:
-			terrain = Globals.Terrain.Desert
+			terrain = Terrain.Desert
 		tile.terrain = terrain
 		tile.explored = not hidden_deck and not shuffled_deck
 		if tile.terrain in unnumberedTerrains:
