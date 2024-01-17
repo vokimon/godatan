@@ -29,6 +29,7 @@ func update_label():
 		"n": dice_number,
 		"dots": '˙'.repeat(frequency),
 	})
+	$Number.visible = visible
 
 func _draw():
 	draw_circle(Vector2.ZERO, 40, Color.DARK_GOLDENROD if highlighted else Color.BURLYWOOD )

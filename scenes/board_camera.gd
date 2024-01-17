@@ -21,6 +21,7 @@ func zoom_step(value):
 	zoom = zoom_level * Vector2.ONE
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not is_current(): return
 	if event is InputEventMouseButton:
 		match event.button_index:
 			MOUSE_BUTTON_MIDDLE:

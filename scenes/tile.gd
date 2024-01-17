@@ -1,7 +1,8 @@
 extends RigidBody2D
-const Globals = preload("res://Globals.gd")
 
+const Globals = preload("res://Globals.gd")
 const Terrain = Globals.Terrain
+
 @export var terrain: Terrain = Terrain.Unknown
 @export var dice_value: int:
 	set(value):
@@ -41,7 +42,7 @@ func _ready():
 	update_texture()
 
 func update_texture():
-	if $Picture == null: return
+	if find_child("Picture") == null: return
 	$Picture.texture = terrain_texture(terrain if explored else Terrain.Unknown)
 	$Picture.texture_offset = Vector2(randi_range(0,200), randi_range(0,200))
 	$DiceNumber.dice_number = dice_value if explored else 0

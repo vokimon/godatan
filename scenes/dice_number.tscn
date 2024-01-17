@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bue0minquvry"]
+[gd_scene load_steps=3 format=3 uid="uid://bue0minquvry"]
 
-[ext_resource type="Script" path="res://dice_number.gd" id="1_oogsf"]
+[ext_resource type="Script" path="res://scenes/dice_number.gd" id="1_oogsf"]
+[ext_resource type="Script" path="res://scenes/dice_number_camera.gd" id="2_5qntu"]
 
 [node name="DiceNumber" type="Sprite2D"]
 script = ExtResource("1_oogsf")
+dice_number = 2
 
 [node name="Number" type="Label" parent="."]
 anchors_preset = 8
@@ -18,6 +20,8 @@ offset_bottom = 33.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 14
 text = "4
 ˙˙˙˙"
@@ -26,4 +30,5 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="DiceNumberCamera" type="Camera2D" parent="."]
+script = ExtResource("2_5qntu")

@@ -1,5 +1,5 @@
 extends Node2D
-const TileScene = preload("res://tile.tscn")
+const TileScene = preload("res://scenes/tile.tscn")
 const Terrain = Globals.Terrain
 const game = {
 	"map": [
@@ -163,6 +163,8 @@ func dice_rolled(value):
 
 func shuffle_decks():
 	"""Takes the game template and generates a set of shuffled decks for a game"""
+	terrain_decks = {}
+	deck_numbers = {}
 	for deck_name in game.decks:
 		var current_deck = game.decks[deck_name]
 		terrain_decks[deck_name] = current_deck.tiles.duplicate()

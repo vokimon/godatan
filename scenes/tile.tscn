@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbl0bydim321g"]
 
-[ext_resource type="Script" path="res://tile.gd" id="1_xkbg4"]
-[ext_resource type="PackedScene" uid="uid://bue0minquvry" path="res://dice_number.tscn" id="3_2d87j"]
-[ext_resource type="PackedScene" uid="uid://cnpicxrr1lbxq" path="res://edge_interactor.tscn" id="3_ukn58"]
+[ext_resource type="Script" path="res://scenes/tile.gd" id="1_x1njl"]
+[ext_resource type="PackedScene" uid="uid://cnpicxrr1lbxq" path="res://scenes/edge_interactor.tscn" id="2_8awwi"]
+[ext_resource type="PackedScene" uid="uid://bue0minquvry" path="res://scenes/dice_number.tscn" id="3_xlall"]
 
 [sub_resource type="Animation" id="Animation_fjpxj"]
 resource_name = "flipout"
@@ -57,7 +57,7 @@ _data = {
 [node name="Tile" type="RigidBody2D" groups=["tiles"]]
 input_pickable = true
 gravity_scale = 0.0
-script = ExtResource("1_xkbg4")
+script = ExtResource("1_x1njl")
 terrain = 1
 dice_value = 6
 
@@ -82,24 +82,24 @@ polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6,
 [node name="BodyCollision" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6, -100, 0)
 
-[node name="EdgeBottomLeft" parent="." instance=ExtResource("3_ukn58")]
+[node name="EdgeBottomLeft" parent="." instance=ExtResource("2_8awwi")]
 rotation = 1.0472
 
-[node name="EdgeBottom" parent="." instance=ExtResource("3_ukn58")]
+[node name="EdgeBottom" parent="." instance=ExtResource("2_8awwi")]
 
-[node name="EdgeTopLeft" parent="." instance=ExtResource("3_ukn58")]
+[node name="EdgeTopLeft" parent="." instance=ExtResource("2_8awwi")]
 rotation = 2.0944
 
-[node name="EdgeBottomRight" parent="." instance=ExtResource("3_ukn58")]
+[node name="EdgeBottomRight" parent="." instance=ExtResource("2_8awwi")]
 rotation = -1.0472
 
-[node name="EdgeTopRight" parent="." instance=ExtResource("3_ukn58")]
+[node name="EdgeTopRight" parent="." instance=ExtResource("2_8awwi")]
 rotation = -2.0944
 
-[node name="EdgeTop" parent="." instance=ExtResource("3_ukn58")]
+[node name="EdgeTop" parent="." instance=ExtResource("2_8awwi")]
 rotation = 3.14159
 
-[node name="DiceNumber" parent="." instance=ExtResource("3_2d87j")]
+[node name="DiceNumber" parent="." instance=ExtResource("3_xlall")]
 dice_number = 6
 
 [node name="Animator" type="AnimationPlayer" parent="."]
