@@ -158,6 +158,3 @@ static var game = {
 		}
 	}
 }
-static var exported = ScenarioPreset.data_to_resource(
-	game, 'res://data/scenario_exported2.tres'
-)

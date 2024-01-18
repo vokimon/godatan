@@ -17,6 +17,10 @@ static func load(filename) -> ScenarioPreset:
 func save(filename):
 	ResourceSaver.save(self, filename)
 
+static var exported = data_to_resource(
+	ScenarioData.game, 'res://data/scenario_exported.tres'
+)
+
 static func data_to_resource(data, resource_file):
 	var scenario = ScenarioPreset.new()
 	scenario.from_data(data)
