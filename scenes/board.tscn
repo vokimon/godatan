@@ -39,7 +39,7 @@ z_index = 1000
 gizmo_extents = 69.1
 
 [node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
-modulate = Color(1, 0.420407, 0.420407, 1)
+modulate = Color(1, 0.383148, 0.383148, 1)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_xpbfx")
 
