@@ -3,21 +3,49 @@ extends Marker2D
 const HexSide = Board.HexSide
 const HexVertex = Board.HexVertex
 
-enum FocusLevel {Tile, Side, Vertex}
+enum FocusLevel { Tile, Side, Vertex }
+enum CursorMode { Tile, SubTile }
 
 @export_category("Board Cursor")
-@export var focus_level: FocusLevel = FocusLevel.Tile
+@export var cursor_mode: CursorMode = CursorMode.Tile
 @export var focus_tile: Vector2i = Vector2i.ZERO
-@export var focus_side: HexSide = HexSide.Top
-@export var focus_vertex: HexVertex = HexVertex.TopRight
+@export var focus_subtile: int = 0
+@export var focus_level: FocusLevel:
+	get:
+		if cursor_mode == CursorMode.Tile: return FocusLevel.Tile
+		if focus_subtile & 1: return FocusLevel.Vertex
+		return FocusLevel.Side
 
-func focus_cycle(forward: bool = true):
-	var levels: Array = FocusLevel.values()
-	var previous: int = levels.find(focus_level)
-	focus_level = levels[clamp(previous+(+1 if forward else -1), 0, len(levels)-1)]
-	if previous != focus_level:
-		focus_side = HexSide.Top
-		focus_vertex = HexVertex.TopRight
+const subtiles = [
+	HexSide.Top,
+	HexVertex.TopRight,
+	HexSide.TopRight,
+	HexVertex.Right,
+	HexSide.BottomRight,
+	HexVertex.BottomRight,
+	HexSide.Bottom,
+	HexVertex.BottomLeft,
+	HexSide.BottomLeft,
+	HexVertex.Left,
+	HexSide.TopLeft,
+	HexVertex.TopLeft,
+]
+
+func enter_subtile():
+	if cursor_mode == CursorMode.SubTile: return
+	cursor_mode = CursorMode.SubTile
+	focus_subtile = 0
+	update_focus()
+
+func exit_subtile():
+	if cursor_mode == CursorMode.Tile: return
+	cursor_mode = CursorMode.Tile
+	update_focus()
+
+func move_focus_intile(forward: bool):
+	var movement = 1 if forward else -1
+	focus_subtile = (focus_subtile+movement)%len(subtiles)
+	var subtile_value = subtiles[focus_subtile]
 	update_focus()
 
 func move_focus_tile(side: HexSide):
@@ -27,29 +55,16 @@ func move_focus_tile(side: HexSide):
 	focus_tile = new_pos
 	update_focus()
 
-func move_focus_side(forward: bool):
-	var sides: Array = HexSide.values()
-	var previous: int = sides.find(focus_side)
-	var movement = 1 if forward else -1
-	focus_side = sides[(previous+movement)%len(sides)]
-	update_focus()
-
-func move_focus_vertex(forward: bool):
-	var vertexes: Array = HexVertex.values()
-	var previous: int = vertexes.find(focus_vertex)
-	var movement = 1 if forward else -1
-	focus_vertex = vertexes[(previous+movement)%len(vertexes)]
-	update_focus()
-
 func update_focus():
 	match focus_level:
 		FocusLevel.Tile:
 			position = get_parent().tile2world(focus_tile)
 		FocusLevel.Side:
+			var focus_side = subtiles[focus_subtile]
 			position = get_parent().side_coords(focus_tile, focus_side)
 		FocusLevel.Vertex:
+			var focus_vertex = subtiles[focus_subtile]
 			position = get_parent().vertex_coords(focus_tile, focus_vertex)
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -59,52 +74,48 @@ func _ready():
 func _process(_delta):
 	pass
 
+func event_processed():
+	get_tree().get_root().set_input_as_handled()
 
 func _input(event):
 	if event is InputEventKey:
 		if event.is_pressed(): return
 		match event.keycode:
 			KEY_ENTER:
-				return focus_cycle(true)
+				enter_subtile()
 			KEY_ESCAPE:
-				return focus_cycle(false)
+				exit_subtile()
 			KEY_UP:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.Top)
-					FocusLevel.Side: return move_focus_side(true)
-					FocusLevel.Vertex: return move_focus_vertex(true)
+				match cursor_mode:
+					CursorMode.Tile: move_focus_tile(HexSide.Top)
+					CursorMode.SubTile: move_focus_intile(true)
 			KEY_DOWN:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.Bottom)
-					FocusLevel.Side: return move_focus_side(false)
-					FocusLevel.Vertex: return move_focus_vertex(false)
+				match cursor_mode:
+					CursorMode.Tile: move_focus_tile(HexSide.Bottom)
+					CursorMode.SubTile: move_focus_intile(false)
 			KEY_RIGHT:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.TopRight)
-					FocusLevel.Side: return move_focus_side(true)
-					FocusLevel.Vertex: return move_focus_vertex(true)
+				match cursor_mode:
+					CursorMode.Tile: move_focus_tile(HexSide.TopRight)
+					CursorMode.SubTile: move_focus_intile(true)
 			KEY_LEFT:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.BottomLeft)
-					FocusLevel.Side: return move_focus_side(false)
-					FocusLevel.Vertex: return move_focus_vertex(false)
+				match cursor_mode:
+					CursorMode.Tile: move_focus_tile(HexSide.BottomLeft)
+					CursorMode.SubTile: move_focus_intile(false)
 			KEY_HOME:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.TopLeft)
-					FocusLevel.Side: return move_focus_side(true)
-					FocusLevel.Vertex: return move_focus_vertex(true)
+				match cursor_mode:
+					CursorMode.Tile: move_focus_tile(HexSide.TopLeft)
+					CursorMode.SubTile: move_focus_intile(true)
 			KEY_END:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.BottomLeft)
-					FocusLevel.Side: return move_focus_side(false)
-					FocusLevel.Vertex: return move_focus_vertex(false)
+				match cursor_mode:
+					CursorMode.Tile: move_focus_tile(HexSide.BottomLeft)
+					CursorMode.SubTile: move_focus_intile(false)
 			KEY_PAGEDOWN:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.BottomRight)
-					FocusLevel.Side: return move_focus_side(false)
-					FocusLevel.Vertex: return move_focus_vertex(false)
+				match cursor_mode:
+					CursorMode.Tile: move_focus_tile(HexSide.BottomRight)
+					CursorMode.SubTile: move_focus_intile(false)
 			KEY_PAGEUP:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.TopRight)
-					FocusLevel.Side: return move_focus_side(true)
-					FocusLevel.Vertex: return move_focus_vertex(true)
+				match cursor_mode:
+					CursorMode.Tile: move_focus_tile(HexSide.TopRight)
+					CursorMode.SubTile: move_focus_intile(true)
+			_: return
+		event_processed()
