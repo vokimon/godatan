@@ -15,10 +15,13 @@ static func load(filename) -> ScenarioPreset:
 	return ResourceLoader.load(filename)
 
 func save(filename):
-	ResourceSaver.save(filename)
+	ResourceSaver.save(self, filename)
 
-func _init():
-	from_data(ScenarioData.game)
+static func data_to_resource(data, resource_file):
+	var scenario = ScenarioPreset.new()
+	scenario.from_data(data)
+	scenario.save(resource_file)
+	return scenario
 
 func from_data(game):
 	name = game.name
@@ -41,4 +44,3 @@ func from_data(game):
 		deck.hidden = deck_data.get('hidden', false)
 		deck.shuffled = deck_data.get('shuffled', false)
 		decks.append(deck)
-	ResourceSaver.save(self, 'scenario_01.tres')

@@ -2,8 +2,8 @@ extends Node2D
 const TileScene = preload("res://scenes/tile.tscn")
 const Terrain = Globals.Terrain
 
-@export var game_scenario: ScenarioPreset
-var game = ScenarioData.game
+@export_category("Board")
+@export var scenario: ScenarioPreset = preload("res://data/scenario_basic.tres")
 
 const tile_side = 100
 const tile_width = tile_side * 2
@@ -62,8 +62,9 @@ func vertex_coords(from: Vector2i, vertex: HexVertex) -> Vector2:
 		-cos(deg_to_rad(vertex)),
 	)
 
+var decks = {}
 var terrain_decks = {}
-var deck_numbers = {}
+var number_decks = {}
 var board_tiles = {}
 
 func dice_rolled(value):
@@ -71,30 +72,31 @@ func dice_rolled(value):
 
 func shuffle_decks():
 	"""Takes the game template and generates a set of shuffled decks for a game"""
+	decks = {}
 	terrain_decks = {}
-	deck_numbers = {}
-	for deck_name in game.decks:
-		var current_deck = game.decks[deck_name]
+	number_decks = {}
+	for current_deck in scenario.decks:
+		var deck_name = current_deck.name
+		decks[deck_name] = current_deck
 		terrain_decks[deck_name] = current_deck.tiles.duplicate()
-		var shuffled = current_deck.get('shuffled', false)
+		var shuffled = current_deck.shuffled
 		if shuffled: terrain_decks[deck_name].shuffle()
-		deck_numbers[deck_name] = current_deck.get('numbers',[]).duplicate()
-		if shuffled: deck_numbers[deck_name].shuffle()
+		number_decks[deck_name] = current_deck.numbers.duplicate()
+		if shuffled: number_decks[deck_name].shuffle()
 
 func deal_decks():
 	"""Lays out the shuffled decks over the board"""
 	board_tiles = {}
 	get_tree().call_group("tiles", "queue_free")
-	for tile_data in game.map:
-		var tile_coords = Vector2i(tile_data[0],tile_data[1])
-		var deck_name: String = tile_data[2]
-		var current_deck = game.decks[deck_name]
+	for tile_coords: Vector2i in scenario.map:
+		var deck_name: String = scenario.map[tile_coords]
+		var current_deck = decks[deck_name]
 		var tile = TileScene.instantiate()
 		tile.position = tile2world(tile_coords)
 		var terrain =  terrain_decks[deck_name].pop_back()
-		var hidden_deck = current_deck.get('hidden', false)
-		var shuffled_deck = current_deck.get('shuffled', false)
-		var unnumberedTerrains = current_deck.get('unnumbered', [])
+		var hidden_deck = current_deck.hidden
+		var shuffled_deck = current_deck.shuffled
+		var unnumberedTerrains = current_deck.unnumbered
 		if terrain == null:
 			terrain = Terrain.Desert
 		tile.terrain = terrain
@@ -102,7 +104,7 @@ func deal_decks():
 		if tile.terrain in unnumberedTerrains:
 			tile.dice_value = 0
 		else:
-			var number = deck_numbers[deck_name].pop_back()
+			var number = number_decks[deck_name].pop_back()
 			tile.dice_value = number if number != null else 0
 		add_child(tile)
 		board_tiles[tile_coords] = tile
