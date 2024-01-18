@@ -1,30 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbqw3yiiuhy3f"]
+[gd_scene load_steps=5 format=3 uid="uid://cbqw3yiiuhy3f"]
 
 [ext_resource type="Script" path="res://scenes/board.gd" id="1_droao"]
 [ext_resource type="Script" path="res://scenes/board_camera.gd" id="2_2sp0w"]
 [ext_resource type="Resource" uid="uid://g7k677nhdumv" path="res://data/scenario_unexplored_island.tres" id="2_pf75w"]
-[ext_resource type="Texture2D" uid="uid://by1kstxkxx1rk" path="res://icon.svg" id="3_xpbfx"]
-
-[sub_resource type="Animation" id="Animation_nxfxy"]
-resource_name = "blink"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkass"]
-_data = {
-"blink": SubResource("Animation_nxfxy")
-}
+[ext_resource type="PackedScene" uid="uid://bkcvhd707mnhm" path="res://scenes/board_cursor.tscn" id="4_eks2g"]
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_droao")
@@ -34,18 +13,4 @@ scenario = ExtResource("2_pf75w")
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_2sp0w")
 
-[node name="BoardCursor" type="Marker2D" parent="."]
-z_index = 1000
-gizmo_extents = 69.1
-
-[node name="Sprite2D" type="Sprite2D" parent="BoardCursor"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_xpbfx")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BoardCursor"]
-root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_bkass")
-}
-autoplay = "blink"
-speed_scale = 0.6
+[node name="BoardCursor" parent="." instance=ExtResource("4_eks2g")]

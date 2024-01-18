@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkcvhd707mnhm"]
+
+[ext_resource type="Script" path="res://scenes/board_cursor.gd" id="1_nef7p"]
+[ext_resource type="Texture2D" uid="uid://by1kstxkxx1rk" path="res://icon.svg" id="1_wii6r"]
+
+[sub_resource type="Animation" id="Animation_nxfxy"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkass"]
+_data = {
+"blink": SubResource("Animation_nxfxy")
+}
+
+[node name="BoardCursor" type="Marker2D"]
+z_index = 100
+script = ExtResource("1_nef7p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_wii6r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_bkass")
+}
+autoplay = "blink"
+speed_scale = 0.6

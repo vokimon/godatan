@@ -1,4 +1,5 @@
 extends Node2D
+class_name Board
 const TileScene = preload("res://scenes/tile.tscn")
 const Terrain = Globals.Terrain
 
@@ -111,54 +112,9 @@ func deal_decks():
 		if shuffled_deck and not hidden_deck:
 			tile.flip()
 
-enum FocusLevel {Tile, Side, Vertex}
-var focus_level: FocusLevel = FocusLevel.Tile
-func focus_cycle(forward: bool = true):
-	var levels: Array = FocusLevel.values()
-	var previous: int = levels.find(focus_level)
-	focus_level = levels[clamp(previous+(+1 if forward else -1), 0, len(levels)-1)]
-	if previous != focus_level:
-		focus_side = HexSide.Top
-		focus_vertex = HexVertex.TopRight
-	update_focus()
-
-var focus_tile: Vector2i = Vector2i.ZERO
-func move_focus_tile(side: HexSide):
-	var new_pos = tile_at_side(focus_tile, side)
-	if new_pos not in board_tiles:
-		return
-	focus_tile = new_pos
-	update_focus()
-
-var focus_side: HexSide = HexSide.Top
-func move_focus_side(forward: bool):
-	var sides: Array = HexSide.values()
-	var previous: int = sides.find(focus_side)
-	var movement = 1 if forward else -1
-	focus_side = sides[(previous+movement)%len(sides)]
-	update_focus()
-
-var focus_vertex: HexVertex = HexVertex.TopRight
-func move_focus_vertex(forward: bool):
-	var vertexes: Array = HexVertex.values()
-	var previous: int = vertexes.find(focus_vertex)
-	var movement = 1 if forward else -1
-	focus_vertex = vertexes[(previous+movement)%len(vertexes)]
-	update_focus()
-
-func update_focus():
-	match focus_level:
-		FocusLevel.Tile:
-			$BoardCursor.position = tile2world(focus_tile)
-		FocusLevel.Side:
-			$BoardCursor.position = side_coords(focus_tile, focus_side)
-		FocusLevel.Vertex:
-			$BoardCursor.position = vertex_coords(focus_tile, focus_vertex)
-
 func _ready():
 	shuffle_decks()
 	deal_decks()
-	$BoardCursor.position = tile2world(focus_tile)
 
 func _process(_delta):
 	pass
@@ -171,47 +127,3 @@ func _input(event):
 				shuffle_decks()
 				deal_decks()
 				return
-			KEY_ENTER:
-				return focus_cycle(true)
-			KEY_ESCAPE:
-				return focus_cycle(false)
-			KEY_UP:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.Top)
-					FocusLevel.Side: return move_focus_side(true)
-					FocusLevel.Vertex: return move_focus_vertex(true)
-			KEY_DOWN:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.Bottom)
-					FocusLevel.Side: return move_focus_side(false)
-					FocusLevel.Vertex: return move_focus_vertex(false)
-			KEY_RIGHT:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.TopRight)
-					FocusLevel.Side: return move_focus_side(true)
-					FocusLevel.Vertex: return move_focus_vertex(true)
-			KEY_LEFT:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.BottomLeft)
-					FocusLevel.Side: return move_focus_side(false)
-					FocusLevel.Vertex: return move_focus_vertex(false)
-			KEY_HOME:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.TopLeft)
-					FocusLevel.Side: return move_focus_side(true)
-					FocusLevel.Vertex: return move_focus_vertex(true)
-			KEY_END:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.BottomLeft)
-					FocusLevel.Side: return move_focus_side(false)
-					FocusLevel.Vertex: return move_focus_vertex(false)
-			KEY_PAGEDOWN:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.BottomRight)
-					FocusLevel.Side: return move_focus_side(false)
-					FocusLevel.Vertex: return move_focus_vertex(false)
-			KEY_PAGEUP:
-				match focus_level:
-					FocusLevel.Tile: return move_focus_tile(HexSide.TopRight)
-					FocusLevel.Side: return move_focus_side(true)
-					FocusLevel.Vertex: return move_focus_vertex(true)
