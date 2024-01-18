@@ -19,11 +19,11 @@ tiles = Array[int]([6, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4])
 numbers = Array[int]([6, 6, 5, 5, 4, 4, 3, 3, 2, 8, 8, 9, 9, 10, 10, 11, 11, 12])
 shuffled = true
 hidden = false
-unnumbered = Array[int]([])
+unnumbered = Array[int]([6])
 
 [resource]
 script = ExtResource("2_glq1j")
-name = "ClassicExplorer"
+name = "Basic"
 map = {
 Vector2i(-3, -3): "sea",
 Vector2i(-3, -2): "sea",

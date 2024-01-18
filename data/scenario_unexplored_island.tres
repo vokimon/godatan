@@ -19,7 +19,7 @@ tiles = Array[int]([0, 1, 2, 3, 4, 5])
 numbers = Array[int]([6, 5, 4, 3, 2, 8, 9, 10, 11, 12])
 shuffled = true
 hidden = true
-unnumbered = Array[int]([])
+unnumbered = Array[int]([6, 5])
 
 [sub_resource type="Resource" id="Resource_6kx3g"]
 script = ExtResource("1_5xmkj")
@@ -28,7 +28,7 @@ tiles = Array[int]([6, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4])
 numbers = Array[int]([6, 6, 5, 5, 4, 4, 3, 3, 2, 8, 8, 9, 9, 10, 10, 11, 11, 12])
 shuffled = true
 hidden = false
-unnumbered = Array[int]([])
+unnumbered = Array[int]([6])
 
 [resource]
 script = ExtResource("2_glq1j")
