@@ -47,7 +47,7 @@ func from_data(game):
 			deck.numbers.append(n)
 		deck.hidden = deck_data.get('hidden', false)
 		deck.shuffled = deck_data.get('shuffled', false)
-		deck.unnumbered = []
+		deck.unnumbered = [] as Array[Terrain]
 		for terrain in deck_data.get('unnumbered', []):
 			deck.unnumbered.append(terrain)
 		decks.append(deck)
