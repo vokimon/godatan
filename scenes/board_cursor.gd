@@ -1,7 +1,14 @@
+class_name BoardCursor
 extends Marker2D
 
-const HexSide = Board.HexSide
-const HexVertex = Board.HexVertex
+"""
+A BoardCursor is a keyboard controled cursor to navigate among tiles
+and within tile hot spots (sides and corners).
+"""
+# TODO: Fully decouple from Board
+
+const HexSide = Hex.HexSide
+const HexVertex = Hex.HexVertex
 
 enum FocusLevel { Tile, Side, Vertex }
 enum CursorMode { Tile, SubTile }
@@ -45,11 +52,10 @@ func exit_subtile():
 func move_focus_intile(forward: bool):
 	var movement = 1 if forward else -1
 	focus_subtile = (focus_subtile+movement)%len(subtiles)
-	var subtile_value = subtiles[focus_subtile]
 	update_focus()
 
 func move_focus_tile(side: HexSide):
-	var new_pos = get_parent().tile_at_side(focus_tile, side)
+	var new_pos = Hex.tile_at_side(focus_tile, side)
 	if new_pos not in get_parent().board_tiles:
 		return
 	focus_tile = new_pos
@@ -58,17 +64,17 @@ func move_focus_tile(side: HexSide):
 func update_focus():
 	match focus_level:
 		FocusLevel.Tile:
-			position = get_parent().tile2world(focus_tile)
+			position = Hex.tile2world(focus_tile)
 		FocusLevel.Side:
 			var focus_side = subtiles[focus_subtile]
-			position = get_parent().side_coords(focus_tile, focus_side)
+			position = Hex.side_coords(focus_tile, focus_side)
 		FocusLevel.Vertex:
 			var focus_vertex = subtiles[focus_subtile]
-			position = get_parent().vertex_coords(focus_tile, focus_vertex)
+			position = Hex.vertex_coords(focus_tile, focus_vertex)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position = get_parent().tile2world(focus_tile)
+	position = Hex.tile2world(focus_tile)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
