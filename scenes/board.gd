@@ -149,16 +149,16 @@ func move_focus_vertex(forward: bool):
 func update_focus():
 	match focus_level:
 		FocusLevel.Tile:
-			$Marker2D.position = tile2world(focus_tile)
+			$BoardCursor.position = tile2world(focus_tile)
 		FocusLevel.Side:
-			$Marker2D.position = side_coords(focus_tile, focus_side)
+			$BoardCursor.position = side_coords(focus_tile, focus_side)
 		FocusLevel.Vertex:
-			$Marker2D.position = vertex_coords(focus_tile, focus_vertex)
+			$BoardCursor.position = vertex_coords(focus_tile, focus_vertex)
 
 func _ready():
 	shuffle_decks()
 	deal_decks()
-	$Marker2D.position = tile2world(focus_tile)
+	$BoardCursor.position = tile2world(focus_tile)
 
 func _process(_delta):
 	pass

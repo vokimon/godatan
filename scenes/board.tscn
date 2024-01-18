@@ -34,16 +34,15 @@ scenario = ExtResource("2_pf75w")
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_2sp0w")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="BoardCursor" type="Marker2D" parent="."]
 z_index = 1000
 gizmo_extents = 69.1
 
-[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
-modulate = Color(1, 0.383148, 0.383148, 1)
+[node name="Sprite2D" type="Sprite2D" parent="BoardCursor"]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_xpbfx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Marker2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BoardCursor"]
 root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_bkass")
