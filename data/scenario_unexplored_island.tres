@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="ScenarioPreset" load_steps=6 format=3 uid="uid://g7k677nhdumv"]
+[gd_resource type="Resource" script_class="ScenarioPreset" load_steps=16 format=3 uid="uid://g7k677nhdumv"]
 
-[ext_resource type="Script" path="res://scenes/tile_deck.gd" id="1_5xmkj"]
-[ext_resource type="Script" path="res://scenes/scenario_preset.gd" id="2_glq1j"]
+[ext_resource type="Script" path="res://scenes/tile_deck.gd" id="1_pflgu"]
+[ext_resource type="Script" path="res://scenes/tile_side.gd" id="2_7cqss"]
+[ext_resource type="Script" path="res://scenes/scenario_preset.gd" id="3_8h60m"]
 
-[sub_resource type="Resource" id="Resource_xvv4t"]
-script = ExtResource("1_5xmkj")
+[sub_resource type="Resource" id="Resource_x3s0h"]
+script = ExtResource("1_pflgu")
 name = "sea"
 tiles = Array[int]([5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5])
 numbers = Array[int]([])
@@ -12,8 +13,8 @@ shuffled = false
 hidden = false
 unnumbered = Array[int]([])
 
-[sub_resource type="Resource" id="Resource_ndg6o"]
-script = ExtResource("1_5xmkj")
+[sub_resource type="Resource" id="Resource_uh5io"]
+script = ExtResource("1_pflgu")
 name = "newworld"
 tiles = Array[int]([0, 1, 2, 3, 4, 5])
 numbers = Array[int]([6, 5, 4, 3, 2, 8, 9, 10, 11, 12])
@@ -21,8 +22,8 @@ shuffled = true
 hidden = true
 unnumbered = Array[int]([6, 5])
 
-[sub_resource type="Resource" id="Resource_6kx3g"]
-script = ExtResource("1_5xmkj")
+[sub_resource type="Resource" id="Resource_x2j5b"]
+script = ExtResource("1_pflgu")
 name = "land"
 tiles = Array[int]([6, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4])
 numbers = Array[int]([6, 6, 5, 5, 4, 4, 3, 3, 2, 8, 8, 9, 9, 10, 10, 11, 11, 12])
@@ -30,9 +31,54 @@ shuffled = true
 hidden = false
 unnumbered = Array[int]([6])
 
+[sub_resource type="Resource" id="Resource_3ftb4"]
+script = ExtResource("2_7cqss")
+tile = Vector2i(0, -3)
+side = 180
+
+[sub_resource type="Resource" id="Resource_2edap"]
+script = ExtResource("2_7cqss")
+tile = Vector2i(-2, -3)
+side = 120
+
+[sub_resource type="Resource" id="Resource_3h1r5"]
+script = ExtResource("2_7cqss")
+tile = Vector2i(-3, -2)
+side = 120
+
+[sub_resource type="Resource" id="Resource_87rex"]
+script = ExtResource("2_7cqss")
+tile = Vector2i(-3, 0)
+side = 60
+
+[sub_resource type="Resource" id="Resource_oa0sr"]
+script = ExtResource("2_7cqss")
+tile = Vector2i(-1, 2)
+side = 0
+
+[sub_resource type="Resource" id="Resource_072gq"]
+script = ExtResource("2_7cqss")
+tile = Vector2i(1, 3)
+side = 0
+
+[sub_resource type="Resource" id="Resource_qhwlt"]
+script = ExtResource("2_7cqss")
+tile = Vector2i(3, 3)
+side = -60
+
+[sub_resource type="Resource" id="Resource_f0oul"]
+script = ExtResource("2_7cqss")
+tile = Vector2i(3, 1)
+side = -120
+
+[sub_resource type="Resource" id="Resource_5ipr2"]
+script = ExtResource("2_7cqss")
+tile = Vector2i(2, -1)
+side = -120
+
 [resource]
-script = ExtResource("2_glq1j")
-name = "Unexplored island"
+script = ExtResource("3_8h60m")
+name = "ClassicExplorer"
 map = {
 Vector2i(-3, -3): "sea",
 Vector2i(-3, -2): "sea",
@@ -88,7 +134,7 @@ Vector2i(6, 3): "sea",
 Vector2i(6, 4): "sea",
 Vector2i(6, 5): "sea"
 }
-decks = Array[ExtResource("1_5xmkj")]([SubResource("Resource_xvv4t"), SubResource("Resource_ndg6o"), SubResource("Resource_6kx3g")])
+decks = Array[ExtResource("1_pflgu")]([SubResource("Resource_x3s0h"), SubResource("Resource_uh5io"), SubResource("Resource_x2j5b")])
 player_piece_set = {
 "city": 4,
 "knight_1": 0,
@@ -100,3 +146,4 @@ player_piece_set = {
 "town": 10,
 "wall": 0
 }
+port_locations = Array[ExtResource("2_7cqss")]([SubResource("Resource_3ftb4"), SubResource("Resource_2edap"), SubResource("Resource_3h1r5"), SubResource("Resource_87rex"), SubResource("Resource_oa0sr"), SubResource("Resource_072gq"), SubResource("Resource_qhwlt"), SubResource("Resource_f0oul"), SubResource("Resource_5ipr2")])

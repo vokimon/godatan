@@ -64,7 +64,6 @@ func _on_input_event(_viewport, event, _shape_idx):
 			flip()
 			event_processed()
 
-
 func _on_mouse_entered():
 	highlight_body()
 

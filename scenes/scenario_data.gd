@@ -72,6 +72,17 @@ static var game = {
 		[+6, +4, "sea"],
 		[+6, +5, "sea"],
 	],
+	"port_locations": [
+		[+0,-3, Hex.Side.Bottom],
+		[-2,-3, Hex.Side.BottomRight],
+		[-3,-2, Hex.Side.BottomRight],
+		[-3,+0, Hex.Side.TopRight],
+		[-1,+2, Hex.Side.Top],
+		[+1,+3, Hex.Side.Top],
+		[+3,+3, Hex.Side.TopLeft],
+		[+3,+1, Hex.Side.BottomLeft],
+		[+2,-1, Hex.Side.BottomLeft],
+	],
 	"decks": {
 		"sea": {
 			"tiles": [

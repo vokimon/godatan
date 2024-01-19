@@ -6,10 +6,12 @@ An scenario preset is a way of laying out the decks of tiles on the board.
 """
 
 const Terrain = Globals.Terrain
+@export_category("Catan Scenario")
 @export var name: String = "Untittled"
 @export var map: Dictionary = {} # Vector2i -> DeckName
 @export var decks: Array[TileDeck] = [] 
 @export var player_piece_set: Dictionary = {} # Name -> int
+@export var port_locations: Array[TileSide] = []
 
 static func load(filename) -> ScenarioPreset:
 	return ResourceLoader.load(filename)
@@ -34,6 +36,13 @@ func from_data(game):
 	for data in game.map:
 		var tile_coords = Vector2i(data[0], data[1])
 		map[tile_coords] = data[2]
+	port_locations = []
+	for data in game.get("port_locations",[]):
+		print("data ", data)
+		var location = TileSide.new()
+		location.tile = Vector2i(data[0], data[1])
+		location.side = data[2]
+		port_locations.append(location)
 	decks = []
 	for deck_name in game.decks:
 		var deck_data = game.decks[deck_name]

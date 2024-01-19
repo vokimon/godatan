@@ -54,6 +54,18 @@ func deal_decks():
 		board_tiles[tile_coords] = tile
 		if shuffled_deck and not hidden_deck:
 			tile.flip()
+	print("Goo locations", scenario.port_locations)
+	for port_location in scenario.port_locations:
+		print(port_location, )
+		var portMarker = Sprite2D.new()
+		portMarker.texture = load("res://tiles/harbour.svg")
+		portMarker.rotate(deg_to_rad(port_location.side))
+		var portSpeciality = Sprite2D.new()
+		portSpeciality.texture = load("res://tiles/stones.svg")
+		portSpeciality.scale = Vector2(0.3,0.3)
+		var tile: RigidBody2D = board_tiles[port_location.tile]
+		tile.add_child(portMarker)
+		tile.add_child(portSpeciality)
 
 func _ready():
 	shuffle_decks()
