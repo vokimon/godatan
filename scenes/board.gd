@@ -9,6 +9,8 @@ const Terrain = Globals.Terrain
 var decks = {}
 var terrain_decks = {}
 var number_decks = {}
+var port_decks = {}
+
 var board_tiles = {}
 
 func dice_rolled(value):
@@ -19,6 +21,7 @@ func shuffle_decks():
 	decks = {}
 	terrain_decks = {}
 	number_decks = {}
+	port_decks = {}
 	for current_deck in scenario.decks:
 		var deck_name = current_deck.name
 		decks[deck_name] = current_deck
@@ -27,6 +30,8 @@ func shuffle_decks():
 		if shuffled: terrain_decks[deck_name].shuffle()
 		number_decks[deck_name] = current_deck.numbers.duplicate()
 		if shuffled: number_decks[deck_name].shuffle()
+		port_decks[deck_name] = current_deck.port_resources.duplicate()
+		if current_deck.ports_shuffled: port_decks[deck_name].shuffle()
 
 func deal_decks():
 	"""Lays out the shuffled decks over the board"""
@@ -54,18 +59,26 @@ func deal_decks():
 		board_tiles[tile_coords] = tile
 		if shuffled_deck and not hidden_deck:
 			tile.flip()
-	print("Goo locations", scenario.port_locations)
 	for port_location in scenario.port_locations:
-		print(port_location, )
 		var portMarker = Sprite2D.new()
 		portMarker.texture = load("res://tiles/harbour.svg")
 		portMarker.rotate(deg_to_rad(port_location.side))
+		var resource:  Globals.ResourceType = Board.deck_deal(port_decks, "sea", Globals.ResourceType.Nothing)
 		var portSpeciality = Sprite2D.new()
-		portSpeciality.texture = load("res://tiles/stones.svg")
+		portSpeciality.texture = Globals.resource_texture(resource)
 		portSpeciality.scale = Vector2(0.3,0.3)
+		portSpeciality.rotate(deg_to_rad(port_location.side+180))
 		var tile: RigidBody2D = board_tiles[port_location.tile]
 		tile.add_child(portMarker)
 		tile.add_child(portSpeciality)
+
+static func deck_deal(deck_type, deck_name, default):
+	if deck_name not in deck_type:
+		return default
+	var selected = deck_type[deck_name].pop_back()
+	if selected == null: return default
+	return selected
+		
 
 func _ready():
 	shuffle_decks()

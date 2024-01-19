@@ -2,19 +2,24 @@ extends Object
 class_name ScenarioData
 
 const Terrain = Globals.Terrain
+const ResourceType = Globals.ResourceType
 
 static var game = {
 	"name": "ClassicExplorer",
 	"player_piece_set": {
-		"town": 10,
+		"town": 5,
 		"city": 4,
-		"sea_city": 0,
 		"road": 15,
-		"ship": 0,
-		"wall": 0,
-		"knight_1": 0,
-		"knight_2": 0,
-		"knight_3": 0,
+		#"ship": 0,
+		#"wall": 0,
+		#"knight_1": 0,
+		#"knight_2": 0,
+		#"knight_3": 0,
+		#"harbour_city": 0,
+		#"pirate_ship": 0,
+		#"explorer_ship": 0,
+		#"settler": 0,
+		#"crew": 0,
 	},
 	"map": [
 		# hex-x, hex-y, deck
@@ -115,6 +120,18 @@ static var game = {
 				Terrain.Sea,
 				Terrain.Sea,
 			],
+			"port_resources": [
+				ResourceType.Wood,
+				ResourceType.Nothing,
+				ResourceType.Brick,
+				ResourceType.Nothing,
+				ResourceType.Sheep,
+				ResourceType.Nothing,
+				ResourceType.Grain,
+				ResourceType.Nothing,
+				ResourceType.Stone,
+			],
+			"ports_shuffled": true,
 		},
 		"newworld": {
 			"hidden": true,
@@ -165,7 +182,7 @@ static var game = {
 			],
 			"unnumbered": [
 				Terrain.Desert,
-			]
+			],
 		}
 	}
 }
