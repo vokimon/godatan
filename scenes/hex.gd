@@ -6,7 +6,7 @@ const tile_width = tile_side * 2
 const tile_heigth = tile_side * sqrt(3) # 173.20
 const tile_margin = 0
 
-enum HexSide {
+enum Side {
 	Top = 0,
 	TopRight = +60,
 	BottomRight = +120,
@@ -15,7 +15,7 @@ enum HexSide {
 	TopLeft = -60,
 }
 
-enum HexVertex {
+enum Corner {
 	TopRight = +30,
 	Right = +90,
 	BottomRight = +150,
@@ -30,30 +30,30 @@ static func tile2world(tile_pos: Vector2i) -> Vector2:
 		tile_pos.y * (tile_heigth + tile_margin) - tile_pos.x * (tile_heigth / 2. + tile_margin / 2.),
 	)
 
-static func tile_at_side(from: Vector2i, side: HexSide) -> Vector2i:
+static func tile_at_side(from: Vector2i, side: Side) -> Vector2i:
 	match side:
-		HexSide.Top:
+		Side.Top:
 			return Vector2i(from.x, from.y-1)
-		HexSide.TopRight:
+		Side.TopRight:
 			return Vector2i(from.x+1, from.y)
-		HexSide.BottomRight:
+		Side.BottomRight:
 			return Vector2i(from.x+1, from.y+1)
-		HexSide.Bottom:
+		Side.Bottom:
 			return Vector2i(from.x, from.y+1)
-		HexSide.BottomLeft:
+		Side.BottomLeft:
 			return Vector2i(from.x-1, from.y)
-		HexSide.TopLeft:
+		Side.TopLeft:
 			return Vector2i(from.x-1, from.y-1)
 	return from # Should not return
 
-static func side_coords(from: Vector2i, side: HexSide) -> Vector2:
+static func side_coords(from: Vector2i, side: Side) -> Vector2:
 	return tile2world(from) + tile_heigth/2. * Vector2(
 		sin(deg_to_rad(side)),
 		-cos(deg_to_rad(side)),
 	)
 
-static func vertex_coords(from: Vector2i, vertex: HexVertex) -> Vector2:
+static func corner_coords(from: Vector2i, corner: Corner) -> Vector2:
 	return tile2world(from) + tile_side * Vector2(
-		sin(deg_to_rad(vertex)),
-		-cos(deg_to_rad(vertex)),
+		sin(deg_to_rad(corner)),
+		-cos(deg_to_rad(corner)),
 	)

@@ -7,9 +7,6 @@ and within tile hot spots (sides and corners).
 """
 # TODO: Fully decouple from Board
 
-const HexSide = Hex.HexSide
-const HexVertex = Hex.HexVertex
-
 enum FocusLevel { Tile, Side, Vertex }
 enum CursorMode { Tile, SubTile }
 
@@ -24,18 +21,18 @@ enum CursorMode { Tile, SubTile }
 		return FocusLevel.Side
 
 const subtiles = [
-	HexSide.Top,
-	HexVertex.TopRight,
-	HexSide.TopRight,
-	HexVertex.Right,
-	HexSide.BottomRight,
-	HexVertex.BottomRight,
-	HexSide.Bottom,
-	HexVertex.BottomLeft,
-	HexSide.BottomLeft,
-	HexVertex.Left,
-	HexSide.TopLeft,
-	HexVertex.TopLeft,
+	Hex.Side.Top,
+	Hex.Corner.TopRight,
+	Hex.Side.TopRight,
+	Hex.Corner.Right,
+	Hex.Side.BottomRight,
+	Hex.Corner.BottomRight,
+	Hex.Side.Bottom,
+	Hex.Corner.BottomLeft,
+	Hex.Side.BottomLeft,
+	Hex.Corner.Left,
+	Hex.Side.TopLeft,
+	Hex.Corner.TopLeft,
 ]
 
 func enter_subtile():
@@ -54,8 +51,9 @@ func move_focus_intile(forward: bool):
 	focus_subtile = (focus_subtile+movement)%len(subtiles)
 	update_focus()
 
-func move_focus_tile(side: HexSide):
-	var new_pos = Hex.tile_at_side(focus_tile, side)
+func move_focus_tile(side: Hex.Side):
+	# TODO: No idea why the cast below (Hex.Side -> Side) is needed
+	var new_pos = Hex.tile_at_side(focus_tile, side as Side)
 	if new_pos not in get_parent().board_tiles:
 		return
 	focus_tile = new_pos
@@ -69,8 +67,8 @@ func update_focus():
 			var focus_side = subtiles[focus_subtile]
 			position = Hex.side_coords(focus_tile, focus_side)
 		FocusLevel.Vertex:
-			var focus_vertex = subtiles[focus_subtile]
-			position = Hex.vertex_coords(focus_tile, focus_vertex)
+			var focus_corner = subtiles[focus_subtile]
+			position = Hex.corner_coords(focus_tile, focus_corner)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -93,35 +91,35 @@ func _input(event):
 				exit_subtile()
 			KEY_UP:
 				match cursor_mode:
-					CursorMode.Tile: move_focus_tile(HexSide.Top)
+					CursorMode.Tile: move_focus_tile(Hex.Side.Top)
 					CursorMode.SubTile: move_focus_intile(true)
 			KEY_DOWN:
 				match cursor_mode:
-					CursorMode.Tile: move_focus_tile(HexSide.Bottom)
+					CursorMode.Tile: move_focus_tile(Hex.Side.Bottom)
 					CursorMode.SubTile: move_focus_intile(false)
 			KEY_RIGHT:
 				match cursor_mode:
-					CursorMode.Tile: move_focus_tile(HexSide.TopRight)
+					CursorMode.Tile: move_focus_tile(Hex.Side.TopRight)
 					CursorMode.SubTile: move_focus_intile(true)
 			KEY_LEFT:
 				match cursor_mode:
-					CursorMode.Tile: move_focus_tile(HexSide.BottomLeft)
+					CursorMode.Tile: move_focus_tile(Hex.Side.BottomLeft)
 					CursorMode.SubTile: move_focus_intile(false)
 			KEY_HOME:
 				match cursor_mode:
-					CursorMode.Tile: move_focus_tile(HexSide.TopLeft)
+					CursorMode.Tile: move_focus_tile(Hex.Side.TopLeft)
 					CursorMode.SubTile: move_focus_intile(true)
 			KEY_END:
 				match cursor_mode:
-					CursorMode.Tile: move_focus_tile(HexSide.BottomLeft)
+					CursorMode.Tile: move_focus_tile(Hex.Side.BottomLeft)
 					CursorMode.SubTile: move_focus_intile(false)
 			KEY_PAGEDOWN:
 				match cursor_mode:
-					CursorMode.Tile: move_focus_tile(HexSide.BottomRight)
+					CursorMode.Tile: move_focus_tile(Hex.Side.BottomRight)
 					CursorMode.SubTile: move_focus_intile(false)
 			KEY_PAGEUP:
 				match cursor_mode:
-					CursorMode.Tile: move_focus_tile(HexSide.TopRight)
+					CursorMode.Tile: move_focus_tile(Hex.Side.TopRight)
 					CursorMode.SubTile: move_focus_intile(true)
 			_: return
 		event_processed()
