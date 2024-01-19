@@ -57,3 +57,32 @@ static func corner_coords(from: Vector2i, corner: Corner) -> Vector2:
 		sin(deg_to_rad(corner)),
 		-cos(deg_to_rad(corner)),
 	)
+
+static func corner_peers(tile: Vector2i, corner: Corner) -> Array[Vector2i]:
+	var solution = func(a,b): return [ tile_at_side(tile, a), tile_at_side(tile, b) ]
+	match corner:
+		Corner.TopRight:
+			return solution.call(Side.Top, Side.TopRight)
+		Corner.Right:
+			return solution.call(Side.BottomRight, Side.TopRight)
+		Corner.BottomRight:
+			return solution.call(Side.BottomRight, Side.Bottom)
+		Corner.BottomLeft:
+			return solution.call(Side.BottomLeft, Side.Bottom)
+		Corner.Left:
+			return solution.call(Side.BottomLeft, Side.TopLeft)
+		Corner.TopLeft:
+			return solution.call(Side.Top, Side.TopLeft)
+		_: return []
+
+static func same_side(tile1: Vector2i, side1: Side, tile2: Vector2i, side2: Side):
+	return (
+		tile_at_side(tile1, side1) == tile2 and
+		tile_at_side(tile2, side2) == tile1
+	)
+
+static func same_corner(tile1: Vector2i, corner1: Corner, tile2: Vector2i, corner2: Corner):
+	return (
+		tile1 in corner_peers(tile2, corner2) and
+		tile2 in corner_peers(tile1, corner1) 
+	)
