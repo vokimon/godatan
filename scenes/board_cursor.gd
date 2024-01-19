@@ -10,11 +10,13 @@ and within tile hot spots (sides and corners).
 enum FocusLevel { Tile, Side, Vertex }
 enum CursorMode { Tile, SubTile }
 
+
 @export_category("Board Cursor")
 @export var cursor_mode: CursorMode = CursorMode.Tile
 @export var focus_tile: Vector2i = Vector2i.ZERO
 @export var focus_subtile: int = 0
-@export var focus_level: FocusLevel:
+
+var focus_level: FocusLevel:
 	get:
 		if cursor_mode == CursorMode.Tile: return FocusLevel.Tile
 		if focus_subtile & 1: return FocusLevel.Vertex
