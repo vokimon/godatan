@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="200"
+   height="172"
+   viewBox="0 0 52.916665 45.508333"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (1:1.3+202307231459+0e150ed6c4)"
+   sodipodi:docname="town.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="3.965"
+     inkscape:cx="100"
+     inkscape:cy="85.876419"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1"
+       transform="translate(0.23415283,0.93107266)">
+      <rect
+         style="fill:#ffffff;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-dasharray:none"
+         id="rect1"
+         width="24.689997"
+         height="22.955027"
+         x="13.879782"
+         y="15.414565"
+         ry="0.73950291" />
+      <path
+         id="path1"
+         style="fill:#ffffff;stroke-width:0.603563;stroke-linecap:round"
+         inkscape:transform-center-y="-2.1515433"
+         d="m 8.194807,17.202952 c 12.019583,0 24.039166,0 36.058747,0 C 38.244364,13.2275 32.235175,9.2520483 26.225983,5.2765963 20.215592,9.2520483 14.2052,13.2275 8.194807,17.202952 Z" />
+    </g>
+  </g>
+</svg>
