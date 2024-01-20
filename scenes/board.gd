@@ -60,15 +60,19 @@ func deal_decks():
 		if shuffled_deck and not hidden_deck:
 			tile.flip()
 	for port_location in scenario.port_locations:
+		var resource:  Globals.ResourceType = Board.deck_deal(port_decks, "sea", Globals.ResourceType.Nothing)
+		add_port_overlay(port_location.tile, port_location.side, resource)
+
+func add_port_overlay(tile_pos: Vector2i, side: Hex.Side, resource: Globals.ResourceType):
 		var portMarker = Sprite2D.new()
 		portMarker.texture = load("res://tiles/harbour.svg")
-		portMarker.rotate(deg_to_rad(port_location.side))
-		var resource:  Globals.ResourceType = Board.deck_deal(port_decks, "sea", Globals.ResourceType.Nothing)
+		portMarker.rotate(deg_to_rad(side))
 		var portSpeciality = Sprite2D.new()
 		portSpeciality.texture = Globals.resource_texture(resource)
 		portSpeciality.scale = Vector2(0.3,0.3)
-		portSpeciality.rotate(deg_to_rad(port_location.side+180))
-		var tile: RigidBody2D = board_tiles[port_location.tile]
+		portSpeciality.rotate(deg_to_rad(side+180))
+		var tile: RigidBody2D = board_tiles[tile_pos]
+		add_port_overlay
 		tile.add_child(portMarker)
 		tile.add_child(portSpeciality)
 

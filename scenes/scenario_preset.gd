@@ -57,7 +57,6 @@ func from_data(game):
 			deck.numbers.append(n)
 		deck.port_resources.clear()
 		for resource: ResourceType in deck_data.get('port_resources', []):
-			print("importing", resource)
 			deck.port_resources.append(resource)
 		deck.unnumbered = [] as Array[Terrain]
 		for terrain in deck_data.get('unnumbered', []):
