@@ -13,7 +13,9 @@ config_version=5
 config/name="Cingara"
 run/main_scene="res://scenes/board.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.145098, 0.278431, 0.196078, 1)
+boot_splash/image="res://tiles/icon.png"
+config/icon="res://tiles/icon.svg"
 
 [autoload]
 
