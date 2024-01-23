@@ -22,6 +22,10 @@ config/icon="res://tiles/icon.svg"
 
 Globals="*res://Globals.gd"
 
+[display]
+
+window/size/mode=2
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
