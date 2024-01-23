@@ -29,10 +29,10 @@ func highlight_number():
 	$Animator.play('number_glow')
 
 func highlight_body():
-	$Border.visible = true
+	$Picture.color.a = .9
 
 func unhighlight_body():
-	$Border.visible = false
+	$Picture.color.a = 1.
 
 func _ready():
 	update_texture()
@@ -42,6 +42,7 @@ func update_texture():
 	$Picture.texture = terrain_texture(terrain if explored else Terrain.Unknown)
 	$Picture.texture_offset = Vector2(randi_range(0,200), randi_range(0,200))
 	$DiceNumber.dice_number = dice_value if explored else 0
+	$Border.visible = terrain != Terrain.Sea and explored
 
 func flip():
 	$Animator.play("flipout")
