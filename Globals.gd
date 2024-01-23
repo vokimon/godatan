@@ -23,7 +23,7 @@ static var _textures = {
 }
 static var _loaded: Dictionary = {}
 
-static func terrain_texture(terrain: Terrain):
+func terrain_texture(terrain: Terrain):
 	if terrain not in _loaded:
 		var file = _textures.get(terrain, 'res://tiles/unknown.png')
 		_loaded[terrain] = ResourceLoader.load(file)
