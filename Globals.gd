@@ -47,7 +47,7 @@ static var _resource_textures = {
 	ResourceType.Stone: "res://tiles/stone.svg",
 }
 static var _loaded_resource_textures = {}
-static func resource_texture(resource: ResourceType):
+func resource_texture(resource: ResourceType):
 	if resource not in _loaded_resource_textures:
 		var file = _resource_textures.get(resource, 'res://tiles/question.svg')
 		_loaded_resource_textures[resource] = ResourceLoader.load(file)
