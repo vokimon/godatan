@@ -26,12 +26,13 @@ func shuffle_decks():
 		var deck_name = current_deck.name
 		decks[deck_name] = current_deck
 		terrain_decks[deck_name] = current_deck.tiles.duplicate()
-		var shuffled = current_deck.shuffled
-		if shuffled: terrain_decks[deck_name].shuffle()
 		number_decks[deck_name] = current_deck.numbers.duplicate()
-		if shuffled: number_decks[deck_name].shuffle()
 		port_decks[deck_name] = current_deck.port_resources.duplicate()
-		if current_deck.ports_shuffled: port_decks[deck_name].shuffle()
+		if current_deck.shuffled:
+			terrain_decks[deck_name].shuffle()
+			number_decks[deck_name].shuffle()
+		if current_deck.ports_shuffled:
+			port_decks[deck_name].shuffle()
 
 func deal_decks():
 	"""Lays out the shuffled decks over the board"""
@@ -72,7 +73,6 @@ func add_port_overlay(tile_pos: Vector2i, side: Hex.Side, resource: Globals.Reso
 		portSpeciality.scale = Vector2(0.3,0.3)
 		portSpeciality.rotate(deg_to_rad(side+180))
 		var tile: RigidBody2D = board_tiles[tile_pos]
-		add_port_overlay
 		tile.add_child(portMarker)
 		tile.add_child(portSpeciality)
 
