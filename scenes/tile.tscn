@@ -33,17 +33,9 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_0gx5q"]
-resource_name = "number_glow"
-
-[sub_resource type="Animation" id="Animation_8p3lq"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m27dx"]
 _data = {
-"RESET": SubResource("Animation_8p3lq"),
-"flipout": SubResource("Animation_fjpxj"),
-"number_glow": SubResource("Animation_0gx5q")
+"flipout": SubResource("Animation_fjpxj")
 }
 
 [node name="Tile" type="RigidBody2D" groups=["tiles"]]
