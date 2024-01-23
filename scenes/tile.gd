@@ -55,7 +55,10 @@ func _on_input_event(_viewport, event, _shape_idx):
 	# TODO: Debug only
 	if event is InputEventMouseButton:
 		if event.is_released():
-			flip()
+			match event.button_index:
+				MOUSE_BUTTON_LEFT: flip()
+				MOUSE_BUTTON_RIGHT: highlight_number()
+				_: return
 			event_processed()
 
 func _on_mouse_entered():

@@ -1,7 +1,4 @@
-extends Camera2D
-
-func event_processed():
-	get_tree().get_root().set_input_as_handled()
+extends InteractiveCamera2D
 
 func _input(event):
 	# Only for testing purposes

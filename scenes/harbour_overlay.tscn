@@ -2,18 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/harbour_overlay.gd" id="1_45hf5"]
 [ext_resource type="Texture2D" uid="uid://duoxkwaesrhok" path="res://tiles/harbour.svg" id="1_unv30"]
-
-[sub_resource type="GDScript" id="GDScript_idows"]
-script/source = "extends Sprite2D
-
-func _init():
-	print(\"Speciality _init\")
-
-func _ready():
-	print(\"Speciality _ready\")
-
-
-"
+[ext_resource type="Script" path="res://scenes/interactive_camera_2d.gd" id="3_3pqx1"]
 
 [node name="HarbourOverlay" type="Node2D"]
 script = ExtResource("1_45hf5")
@@ -27,9 +16,9 @@ polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6,
 
 [node name="Speciality" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
-script = SubResource("GDScript_idows")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_3pqx1")
 
 [node name="ExchangeRateLabel" type="Label" parent="."]
 anchors_preset = 7

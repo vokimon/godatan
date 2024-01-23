@@ -21,11 +21,9 @@ func update_resource():
 		$Speciality.texture = resource_texture
 
 func _init(_side := Hex.Side.Top, _resource := Globals.ResourceType.Nothing):
-	print("HarbourOverlay._init %s %s"%([_side, _resource]))
 	self.resource = _resource
 	self.side = _side
 
 func _ready():
-	print("HarbourOverlay._ready %s %s"%([side, resource]))
 	update_resource()
 	update_side()

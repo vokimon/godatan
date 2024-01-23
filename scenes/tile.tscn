@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbl0bydim321g"]
+[gd_scene load_steps=10 format=3 uid="uid://bbl0bydim321g"]
 
 [ext_resource type="Script" path="res://scenes/tile.gd" id="1_x1njl"]
 [ext_resource type="Texture2D" uid="uid://cu3v03oy8n4ce" path="res://tiles/trail.svg" id="2_7wkjy"]
 [ext_resource type="PackedScene" uid="uid://cnpicxrr1lbxq" path="res://scenes/edge_interactor.tscn" id="2_8awwi"]
 [ext_resource type="PackedScene" uid="uid://bue0minquvry" path="res://scenes/dice_number.tscn" id="3_xlall"]
+[ext_resource type="Script" path="res://scenes/interactive_camera_2d.gd" id="5_d71a8"]
 
 [sub_resource type="Animation" id="Animation_8p3lq"]
 length = 0.001
@@ -97,7 +98,9 @@ libraries = {
 }
 speed_scale = 6.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="InteractiveCamera2D" type="Camera2D" parent="."]
+script = ExtResource("5_d71a8")
+zoom_level = 1.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
