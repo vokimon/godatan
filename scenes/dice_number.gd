@@ -1,8 +1,17 @@
 extends Node2D
 
+const OUTER_RADIUS = 36
+const INNER_RADIUS = 32
+const OUTER_COLOR_HIGHLIGHT = Color.DARK_GOLDENROD
+const INNER_COLOR_HIGHLIGHT = Color.YELLOW
+const OUTER_COLOR = Color.BURLYWOOD
+const INNER_COLOR = Color.WHEAT
+
 @export var highlighted: bool = false:
-	set(value):
-		highlighted = value
+	set(new_highlighted):
+		if not highlighted and new_highlighted:
+			$AnimationPlayer.play("popoutin")
+		highlighted = new_highlighted
 		queue_redraw()
 
 @export var dice_number: int = 0:
@@ -20,9 +29,9 @@ static var frequencyStyle = {
 
 func update_label():
 	visible = dice_number in [2,3,4,5,6,8,9,10,11,12]
-	var frequency = 6-abs(dice_number-7)
 	if not find_child('Number'): return
 	if not dice_number: return
+	var frequency = 6-abs(dice_number-7)
 	if not frequency: return
 	$Number.label_settings = frequencyStyle.get(frequency)
 	$Number.text = "{n}\n{dots}".format({
@@ -32,8 +41,8 @@ func update_label():
 	$Number.visible = visible
 
 func _draw():
-	draw_circle(Vector2.ZERO, 40, Color.DARK_GOLDENROD if highlighted else Color.BURLYWOOD )
-	draw_circle(Vector2.ZERO, 36, Color.YELLOW if highlighted else Color.WHEAT)
+	draw_circle(Vector2.ZERO, OUTER_RADIUS, OUTER_COLOR_HIGHLIGHT if highlighted else OUTER_COLOR )
+	draw_circle(Vector2.ZERO, INNER_RADIUS, INNER_COLOR_HIGHLIGHT if highlighted else INNER_COLOR)
 
 func _ready():
 	update_label()

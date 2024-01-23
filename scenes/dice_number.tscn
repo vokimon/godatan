@@ -1,7 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bue0minquvry"]
+[gd_scene load_steps=6 format=3 uid="uid://bue0minquvry"]
 
 [ext_resource type="Script" path="res://scenes/dice_number.gd" id="1_oogsf"]
 [ext_resource type="Script" path="res://scenes/dice_number_camera.gd" id="2_fmrlf"]
+[ext_resource type="LabelSettings" uid="uid://bu8lv3hgqfmdw" path="res://label_settings/tile_number_freq3.tres" id="2_knjq1"]
+
+[sub_resource type="Animation" id="Animation_61fde"]
+resource_name = "popoutin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_quutl"]
+_data = {
+"popoutin": SubResource("Animation_61fde")
+}
 
 [node name="DiceNumber" type="Sprite2D"]
 script = ExtResource("1_oogsf")
@@ -25,6 +46,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 14
 text = "4
 ˙˙˙˙"
+label_settings = ExtResource("2_knjq1")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -32,3 +54,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DiceNumberCamera" type="Camera2D" parent="."]
 script = ExtResource("2_fmrlf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_quutl")
+}
+speed_scale = 6.0

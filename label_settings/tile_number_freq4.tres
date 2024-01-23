@@ -2,7 +2,7 @@
 
 [resource]
 line_spacing = -12.0
-font_size = 40
-font_color = Color(1, 0.803922, 0.654902, 1)
-outline_size = 8
+font_size = 34
+font_color = Color(1, 0.682353, 0, 1)
+outline_size = 6
 outline_color = Color(0.129412, 0.129412, 0.129412, 1)
