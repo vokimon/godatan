@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0llo01rjqh3j"]
+
+[ext_resource type="Script" path="res://scenes/harbour_overlay.gd" id="1_45hf5"]
+[ext_resource type="Texture2D" uid="uid://duoxkwaesrhok" path="res://tiles/harbour.svg" id="1_unv30"]
+
+[sub_resource type="GDScript" id="GDScript_idows"]
+script/source = "extends Sprite2D
+
+func _init():
+	print(\"Speciality _init\")
+
+func _ready():
+	print(\"Speciality _ready\")
+
+
+"
+
+[node name="HarbourOverlay" type="Node2D"]
+script = ExtResource("1_45hf5")
+
+[node name="Picture" type="Polygon2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("1_unv30")
+texture_offset = Vector2(100, 86)
+polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6, -100, 0)
+
+[node name="Speciality" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+script = SubResource("GDScript_idows")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ExchangeRateLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -38.0
+offset_right = 25.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "3:1"
+horizontal_alignment = 1
+vertical_alignment = 1

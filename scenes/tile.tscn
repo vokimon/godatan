@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbl0bydim321g"]
+[gd_scene load_steps=9 format=3 uid="uid://bbl0bydim321g"]
 
 [ext_resource type="Script" path="res://scenes/tile.gd" id="1_x1njl"]
 [ext_resource type="Texture2D" uid="uid://cu3v03oy8n4ce" path="res://tiles/trail.svg" id="2_7wkjy"]
 [ext_resource type="PackedScene" uid="uid://cnpicxrr1lbxq" path="res://scenes/edge_interactor.tscn" id="2_8awwi"]
-[ext_resource type="Texture2D" uid="uid://duoxkwaesrhok" path="res://tiles/harbour.svg" id="3_nphte"]
 [ext_resource type="PackedScene" uid="uid://bue0minquvry" path="res://scenes/dice_number.tscn" id="3_xlall"]
 
 [sub_resource type="Animation" id="Animation_8p3lq"]
@@ -66,15 +65,6 @@ polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6,
 texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("2_7wkjy")
-texture_offset = Vector2(100, 86)
-polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6, -100, 0)
-
-[node name="Harbour" type="Node2D" parent="."]
-
-[node name="Picture" type="Polygon2D" parent="Harbour"]
-texture_filter = 1
-texture_repeat = 2
-texture = ExtResource("3_nphte")
 texture_offset = Vector2(100, 86)
 polygon = PackedVector2Array(-50, -86.6, 50, -86.6, 100, 0, 50, 86.6, -50, 86.6, -100, 0)
 

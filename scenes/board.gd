@@ -1,6 +1,7 @@
 extends Node2D
 class_name Board
 const TileScene = preload("res://scenes/tile.tscn")
+const HarbourOverlayScene = preload("res://scenes/harbour_overlay.tscn")
 const Terrain = Globals.Terrain
 
 @export_category("Board")
@@ -65,16 +66,11 @@ func deal_decks():
 		add_port_overlay(port_location.tile, port_location.side, resource)
 
 func add_port_overlay(tile_pos: Vector2i, side: Hex.Side, resource: Globals.ResourceType):
-		var portMarker = Sprite2D.new()
-		portMarker.texture = load("res://tiles/harbour.svg")
-		portMarker.rotate(deg_to_rad(side))
-		var portSpeciality = Sprite2D.new()
-		portSpeciality.texture = Globals.resource_texture(resource)
-		portSpeciality.scale = Vector2(0.3,0.3)
-		portSpeciality.rotate(deg_to_rad(side+180))
 		var tile: RigidBody2D = board_tiles[tile_pos]
-		tile.add_child(portMarker)
-		tile.add_child(portSpeciality)
+		var harbour = HarbourOverlayScene.instantiate()
+		harbour.side = side
+		harbour.resource = resource
+		tile.add_child(harbour)
 
 static func deck_deal(deck_type, deck_name, default):
 	if deck_name not in deck_type:
@@ -82,7 +78,6 @@ static func deck_deal(deck_type, deck_name, default):
 	var selected = deck_type[deck_name].pop_back()
 	if selected == null: return default
 	return selected
-		
 
 func _ready():
 	shuffle_decks()
