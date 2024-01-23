@@ -11,6 +11,8 @@ numbers = Array[int]([])
 shuffled = false
 hidden = false
 unnumbered = Array[int]([])
+port_resources = Array[int]([])
+ports_shuffled = false
 
 [sub_resource type="Resource" id="Resource_6kx3g"]
 script = ExtResource("1_5xmkj")
@@ -20,6 +22,8 @@ numbers = Array[int]([6, 6, 5, 5, 4, 4, 3, 3, 2, 8, 8, 9, 9, 10, 10, 11, 11, 12]
 shuffled = true
 hidden = false
 unnumbered = Array[int]([6])
+port_resources = Array[int]([])
+ports_shuffled = false
 
 [resource]
 script = ExtResource("2_glq1j")
@@ -75,3 +79,4 @@ player_piece_set = {
 "town": 10,
 "wall": 0
 }
+port_locations = Array[Resource("res://scenes/tile_side.gd")]([])
