@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-const Globals = preload("res://Globals.gd")
 const Terrain = Globals.Terrain
 
 @export var terrain: Terrain = Terrain.Unknown
@@ -26,7 +25,7 @@ func on_dice_rolled(value):
 	$DiceNumber.highlighted = explored and value == dice_value
 
 func highlight_number():
-	$Animator.play('number_glow')
+	$DiceNumber.highlighted = not $DiceNumber.highlighted
 
 func highlight_body():
 	$Picture.color.a = .9
