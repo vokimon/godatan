@@ -10,17 +10,28 @@ There are other ways to play Settlers of Catan.
 I would recommend one of the best opensource implementations, [Pioners],
 or the official propietary digital version [Catan Universe].
 
+## Running from sources
+
+Debian/Ubuntu currently provides as off-the-shelf deb package Godot LTS version 3.5 but this game requires Godot 4.2.
+My recommendation is to [download the Linux static binary](https://godotengine.org/),
+uncompres, make it executable and move in you local user path (`~/.local/bin`?).
+
+To run just call godot from the project directory.
+To edit pass the `project.godot` file as paramenter.
+
 ## License
 
 This software is licensed under GNU Affero GPL License v3 or later.
+More detais in the [license](LICENSE)
 
-I hope you understand what it means.
-Even if you host this software in a server,
-you have to provide your users a way of reaching the source code
-including the modifications you could make,
-under the same conditions the original code was provided to you.
+The Affero licence implies that even if someone serves this game
+through a server, the users should have the right to access the code, 
+including any modification made, with the same original rights and obligations.
 
-More detais in the [license](LICENSE.md)
+IMHO, it is fair to have a fee for using a hosted service based on freesoftware,
+but it is not fair to close free software,
+not giving back modifications to the community
+or not crediting the authors.
 
 ## Credits
 
