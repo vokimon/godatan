@@ -8,11 +8,11 @@ and within tile hot spots (sides and corners).
 # TODO: Fully decouple from Board
 
 enum FocusLevel { Tile, Side, Vertex }
-enum CursorMode { Tile, SubTile }
+enum CursorMode { Inactive, Tile, SubTile }
 
 
 @export_category("Board Cursor")
-@export var cursor_mode: CursorMode = CursorMode.Tile
+@export var cursor_mode: CursorMode = CursorMode.Inactive
 @export var focus_tile: Vector2i = Vector2i.ZERO
 @export var focus_subtile: int = 0
 

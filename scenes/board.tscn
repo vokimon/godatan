@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbqw3yiiuhy3f"]
+[gd_scene load_steps=6 format=3 uid="uid://cbqw3yiiuhy3f"]
 
 [ext_resource type="Script" path="res://scenes/board.gd" id="1_droao"]
 [ext_resource type="Script" path="res://scenes/board_camera.gd" id="2_2sp0w"]
 [ext_resource type="Resource" uid="uid://g7k677nhdumv" path="res://data/scenario_unexplored_island.tres" id="2_pf75w"]
+[ext_resource type="PackedScene" uid="uid://v3pmw5xuvu0v" path="res://scenes/ui/ui.tscn" id="4_cnjau"]
 [ext_resource type="PackedScene" uid="uid://bkcvhd707mnhm" path="res://scenes/board_cursor.tscn" id="4_eks2g"]
 
 [node name="Board" type="Node2D"]
@@ -12,5 +13,10 @@ scenario = ExtResource("2_pf75w")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_2sp0w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ui" parent="Camera2D/CanvasLayer" instance=ExtResource("4_cnjau")]
+size_flags_vertical = 0
 
 [node name="BoardCursor" parent="." instance=ExtResource("4_eks2g")]
