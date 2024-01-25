@@ -9,7 +9,8 @@ rim = 0.73
 rim_tint = 0.64
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gg0cj"]
-bounce = 1.0
+rough = true
+bounce = 0.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uyylj"]
 size = Vector3(2, 0.1, 2)
@@ -28,13 +29,13 @@ size = Vector3(40, 40, 2)
 metadata/_edit_lock_ = true
 
 [node name="Dice" parent="." instance=ExtResource("1_v1r5q")]
-transform = Transform3D(0.859565, 0.475876, -0.186252, -0.21024, 0.6615, 0.719873, 0.465776, -0.57962, 0.668651, -0.0839243, 4.78648, -1.88291)
+transform = Transform3D(0.859565, 0.475876, -0.186252, -0.422599, 0.457009, -0.782658, -0.28733, 0.751455, 0.593934, -0.0839243, 4.78648, -1.88291)
 inertia = Vector3(0, 0, 0)
 
 [node name="Dice2" parent="." instance=ExtResource("1_v1r5q")]
 transform = Transform3D(0.859565, 0.475876, -0.186252, -0.21024, 0.6615, 0.719873, 0.465776, -0.57962, 0.668651, -0.0839243, 4.78648, -1.88291)
 inertia = Vector3(0, 0, 0)
-dice_color = Color(0.647059, 0.8, 0.164706, 1)
+dice_color = Color(0.886275, 0.796078, 0.164706, 1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.946559, -0.0527161, 0.318194, -0.234127, 0.566242, 0.790287, -0.221836, -0.822551, 0.523639, -0.796691, 1.39296, 4.93059)
@@ -43,7 +44,7 @@ shadow_enabled = true
 [node name="OverCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 40, 0)
 current = true
-fov = 12.4
+fov = 11.5
 near = 0.007
 far = 124.74
 
