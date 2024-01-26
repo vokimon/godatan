@@ -13,12 +13,12 @@ var roll_time := 0.
 signal roll_finished(int)
 
 const sides = {
-	1: Vector3.DOWN,
-	2: Vector3.BACK,
-	3: Vector3.LEFT,
-	4: Vector3.RIGHT,
-	5: Vector3.FORWARD,
-	6: Vector3.UP,
+	1: Vector3.LEFT,
+	2: Vector3.FORWARD,
+	3: Vector3.DOWN,
+	4: Vector3.UP,
+	5: Vector3.BACK,
+	6: Vector3.RIGHT,
 }
 
 func has_stabilized() -> bool:
