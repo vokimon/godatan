@@ -9,7 +9,7 @@ const INNER_COLOR = Color.WHEAT
 
 @export var highlighted: bool = false:
 	set(new_highlighted):
-		if not highlighted and new_highlighted:
+		if new_highlighted:
 			$AnimationPlayer.play("popoutin")
 		highlighted = new_highlighted
 		queue_redraw()
