@@ -42,7 +42,7 @@ func _ready():
 	$DiceMesh.mesh.size = dice_size * Vector3.ONE
 	$DiceMesh.material_override = $DiceMesh.material_override.duplicate()
 	$DiceMesh.material_override.albedo_color = dice_color
-	roll()
+	stop()
 
 func stop():
 	freeze = true
@@ -71,8 +71,16 @@ func roll():
 	roll_time = 0
 	print("Impulsed: ", linear_velocity, " ", angular_velocity, " ", position)
 
+func shake():
+	"Move a bad rolled dice"
+	apply_impulse(
+		mass * 10. * Vector3(0,1,0),
+		dice_size * Vector3(randf_range(-1,1),randf_range(-1,1),randf_range(-1,1)),
+	)
+
 func _process(_delta):
 	roll_time += _delta
+	if freeze: return
 #	print("process ", roll_time)
 	if roll_time < 1: return
 	roll_time = 0
@@ -80,18 +88,18 @@ func _process(_delta):
 		print("Penetration")
 		apply_impulse(mass * Vector3(0, 1, 0), dice_size/2.*Vector3.ONE)
 	
-	if position.y > dice_size * .8:
-		print("Arriba: ", position.y)
-		return
 	if linear_velocity.length() > dice_size * 0.1:
 		print("Moviendose: ", linear_velocity)
 		return
 	if angular_velocity.length() > 1.:
 		print("Rodando: ", angular_velocity)
 		return
+	if position.y > dice_size * .8:
+		print("================ Quieto pero Montado: ", position.y)
+		shake()
+		return
 	var side = upper_side()
 	if side:
-		print("Side: ", side)
 		print("Velocity: ", linear_velocity, " ", angular_velocity, " ", position)
 		if linear_velocity.length() > 1.: return
 		if angular_velocity.length() > 1.: return

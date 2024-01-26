@@ -14,6 +14,8 @@ normal_texture = ExtResource("3_sdr1i")
 heightmap_texture = ExtResource("2_fttwd")
 
 [sub_resource type="BoxMesh" id="BoxMesh_fxv3q"]
+lightmap_size_hint = Vector2i(24, 36)
+add_uv2 = true
 size = Vector3(2, 2, 2)
 
 [node name="Dice" type="RigidBody3D"]

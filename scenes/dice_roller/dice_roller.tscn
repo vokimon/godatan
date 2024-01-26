@@ -28,12 +28,12 @@ size = Vector3(40, 40, 2)
 [node name="DiceRoller" type="Node3D"]
 metadata/_edit_lock_ = true
 
-[node name="Dice" parent="." instance=ExtResource("1_v1r5q")]
+[node name="DiceRed" parent="." instance=ExtResource("1_v1r5q")]
 transform = Transform3D(0.859565, 0.475876, -0.186252, -0.422599, 0.457009, -0.782658, -0.28733, 0.751455, 0.593934, -0.0839243, 4.78648, -1.88291)
 inertia = Vector3(0, 0, 0)
 
-[node name="Dice2" parent="." instance=ExtResource("1_v1r5q")]
-transform = Transform3D(0.859565, 0.475876, -0.186252, -0.21024, 0.6615, 0.719873, 0.465776, -0.57962, 0.668651, -0.0839243, 4.78648, -1.88291)
+[node name="DiceYellow" parent="." instance=ExtResource("1_v1r5q")]
+transform = Transform3D(0.859565, 0.475876, -0.186252, -0.21024, 0.6615, 0.719873, 0.465776, -0.57962, 0.668651, -0.0839243, 5.78648, 1.90858)
 inertia = Vector3(0, 0, 0)
 dice_color = Color(0.886275, 0.796078, 0.164706, 1)
 
@@ -42,9 +42,9 @@ transform = Transform3D(0.946559, -0.0527161, 0.318194, -0.234127, 0.566242, 0.7
 shadow_enabled = true
 
 [node name="OverCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 40, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0)
 current = true
-fov = 11.5
+fov = 6.1
 near = 0.007
 far = 124.74
 
