@@ -50,6 +50,9 @@ func _on_finnished_dice_rolling(number: int, dice_name: String):
 	if result.size() == dices.size():
 		print("======= ", result)
 		roll_finnished.emit(total_value)
+		# TODO: Once the strucutre is more set, connect it better
+		var board = get_tree().root.get_node("Board")
+		board and board.dice_rolled(total_value)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
