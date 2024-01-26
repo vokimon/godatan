@@ -5,13 +5,6 @@ extends RigidBody3D
 @export var dice_color := Color.BROWN
 @onready var original_position := position
 
-const dice_size := 2.
-const dice_density := 10.
-
-var roll_time := 0.
-
-signal roll_finished(int)
-
 const sides = {
 	1: Vector3.LEFT,
 	2: Vector3.FORWARD,
@@ -20,6 +13,17 @@ const sides = {
 	5: Vector3.BACK,
 	6: Vector3.RIGHT,
 }
+const dice_size := 2.
+const dice_density := 10.
+## The minimal angle between faces (different in a d20)
+const face_angle := 90.
+## how up must be a face unit vector for the face to be choosen
+var max_tilt := cos(deg_to_rad(face_angle/float(sides.size())))
+
+var roll_time := 0.
+var n_shakes := 0
+signal roll_finished(int)
+
 
 func has_stabilized() -> bool:
 	if global_position.y > dice_size: return false
@@ -34,7 +38,7 @@ func _init():
 	stop()
 
 func _ready():
-	print("Ready", can_sleep, can_process())
+	print(name, " ready, can_sleep ", can_sleep, " can_process ", can_process())
 	original_position = position
 	mass = dice_density * dice_size ** 3 
 	$Collider.shape.size = dice_size * Vector3.ONE
@@ -47,16 +51,12 @@ func _ready():
 func stop():
 	freeze = true
 	sleeping = true
-	position = 1. * Vector3(
-		randf_range(-1.,+1.),
-		5.0*dice_size,
-		randf_range(-1.,+1.),
-	)
+	position = original_position
+	position.y = 5 * dice_size
 	rotation = randf_range(0, 2*PI)*Vector3(1.,1.,1.)
 	lock_rotation = true
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
-	print("Stopped: ", linear_velocity, " ", angular_velocity, " ", position)
 
 func roll():
 	stop()
@@ -65,14 +65,15 @@ func roll():
 	freeze = false
 	sleeping = false
 	lock_rotation = false
-	print("Pre impulse: ", linear_velocity, " ", angular_velocity, " ", position)
-	#apply_central_impulse(mass * 10. * Vector3(randf_range(-1.,+1.), 0, randf_range(-1.,+1.)))
-	#apply_torque_impulse( mass * 100. * 2 * PI * Vector3(1,0,1))
 	roll_time = 0
+	print("Pre impulse: ", linear_velocity, " ", angular_velocity, " ", position)
+	apply_central_impulse(mass * 10. * Vector3(randf_range(-1.,+1.), 0, randf_range(-1.,+1.)))
+	apply_torque_impulse( mass * 100. * 2 * PI * Vector3(1,0,1))
 	print("Impulsed: ", linear_velocity, " ", angular_velocity, " ", position)
 
-func shake():
-	"Move a bad rolled dice"
+func shake(reason: String):
+	"""Move a bad rolled dice"""
+	print("Dice {0}: Reshaking {1}".format([name, reason]))
 	apply_impulse(
 		mass * 10. * Vector3(0,1,0),
 		dice_size * Vector3(randf_range(-1,1),randf_range(-1,1),randf_range(-1,1)),
@@ -85,32 +86,26 @@ func _process(_delta):
 	if roll_time < 1: return
 	roll_time = 0
 	if position.y < dice_size * .5:
-		print("Penetration")
+		print("Dice {0}: Pushing up a bellow ground dice".format([name]))
 		apply_impulse(mass * Vector3(0, 1, 0), dice_size/2.*Vector3.ONE)
 	
 	if linear_velocity.length() > dice_size * 0.1:
-		print("Moviendose: ", linear_velocity)
+		#print("Still moving: ", linear_velocity)
 		return
 	if angular_velocity.length() > 1.:
-		print("Rodando: ", angular_velocity)
+		#print("Still rolling: ", angular_velocity)
 		return
 	if position.y > dice_size * .8:
-		print("================ Quieto pero Montado: ", position.y)
-		shake()
-		return
+		return shake("mounted")
 	var side = upper_side()
-	if side:
-		print("Velocity: ", linear_velocity, " ", angular_velocity, " ", position)
-		if linear_velocity.length() > 1.: return
-		if angular_velocity.length() > 1.: return
-		print("Dice {0} solved {1}".format([name, side]))
-		freeze = true
-		sleeping = true
-		roll_finished.emit(side)
-			
+	if not side:
+		return shake("tilted")
+	print("Dice {0} solved {1}".format([name, side]))
+	freeze = true
+	sleeping = true
+	roll_finished.emit(side)
 
 func upper_side() -> int:
-	var unit_length := to_global(to_local(Vector3.UP).normalized()).length()
 	var highest_y := -INF
 	var highest_side := 0
 	for side in sides:
@@ -118,8 +113,10 @@ func upper_side() -> int:
 		if y < highest_y: continue
 		highest_y = y
 		highest_side = side
-	#print("{0} {1} {2}".format([highest_y, global_position.y, unit_length]))
-	if highest_y - global_position.y > .9 * unit_length:
+	print("{3} Face {0} from center {1} against unit {2}".format([
+		highest_y, highest_y - global_position.y, max_tilt, name
+	]))
+	if highest_y - global_position.y < max_tilt:
 		return 0
 	return highest_side
 
