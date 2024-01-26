@@ -38,14 +38,24 @@ const subtiles = [
 ]
 
 func enter_subtile():
-	if cursor_mode == CursorMode.SubTile: return
-	cursor_mode = CursorMode.SubTile
-	focus_subtile = 0
+	match cursor_mode:
+		CursorMode.SubTile: return
+		CursorMode.Tile:
+			cursor_mode = CursorMode.SubTile
+			focus_subtile = 0
+		CursorMode.Inactive:
+			cursor_mode = CursorMode.Tile
+			focus_tile = Vector2.ZERO
 	update_focus()
 
 func exit_subtile():
-	if cursor_mode == CursorMode.Tile: return
-	cursor_mode = CursorMode.Tile
+	match cursor_mode:
+		CursorMode.Inactive:
+			return
+		CursorMode.Tile:
+			cursor_mode = CursorMode.Inactive
+		CursorMode.SubTile:
+			cursor_mode = CursorMode.Tile
 	update_focus()
 
 func move_focus_intile(forward: bool):
@@ -62,6 +72,7 @@ func move_focus_tile(side: Hex.Side):
 	update_focus()
 
 func update_focus():
+	visible = cursor_mode != CursorMode.Inactive
 	match focus_level:
 		FocusLevel.Tile:
 			position = Hex.tile2world(focus_tile)
@@ -75,6 +86,7 @@ func update_focus():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position = Hex.tile2world(focus_tile)
+	update_focus()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
