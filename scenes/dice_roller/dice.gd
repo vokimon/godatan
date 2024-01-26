@@ -19,7 +19,7 @@ const dice_density := 10.
 const face_angle := 90.
 ## how up must be a face unit vector for the face to be choosen
 var max_tilt := cos(deg_to_rad(face_angle/float(sides.size())))
-
+var rolling := false
 var roll_time := 0.
 var n_shakes := 0
 signal roll_finished(int)
@@ -65,6 +65,7 @@ func roll():
 	sleeping = false
 	lock_rotation = false
 	roll_time = 0
+	rolling = true
 	apply_torque_impulse( dice_size * mass * TAU * Vector3(
 		randf_range(-1.,+1.), 0, randf_range(-1.,+1.)
 	))
@@ -78,18 +79,17 @@ func shake(reason: String):
 	)
 
 func _process(_delta):
+	if not rolling: return
 	roll_time += _delta
-	if freeze: return
-	if roll_time < 1: return
-	roll_time = 0
-	if position.y < dice_size * .5:
-		print("Dice {0}: Bellow ground, pushing up".format([name]))
-		apply_impulse(mass * Vector3(0, 1, 0), dice_size/2.*Vector3.ONE)
-	
-	if linear_velocity.length() > dice_size * 0.1:
+	#if position.y < dice_size * .5:
+		#print("Dice {0}: Bellow ground, pushing up".format([name]))
+		#apply_impulse(mass * Vector3(0, 1, 0), dice_size/2.*Vector3.ONE)
+		#position.y = dice_size * .5
+
+	if linear_velocity.length() > dice_size * 0.2:
 		#print("Still moving: ", linear_velocity)
 		return
-	if angular_velocity.length() > 1.:
+	if angular_velocity.length() > 10.:
 		#print("Still rolling: ", angular_velocity)
 		return
 	if position.y > dice_size * .8:
@@ -97,9 +97,10 @@ func _process(_delta):
 	var side = upper_side()
 	if not side:
 		return shake("tilted")
-	print("Dice {0} solved {1}".format([name, side]))
+	print("Dice %s solved [%s] - %.02fs"%([name, side, roll_time]))
 	freeze = true
 	sleeping = true
+	rolling = false
 	roll_finished.emit(side)
 
 func upper_side() -> int:
@@ -110,9 +111,9 @@ func upper_side() -> int:
 		if y < highest_y: continue
 		highest_y = y
 		highest_side = side
-	print("{3} Face {0} from center {1} against unit {2}".format([
-		highest_y, highest_y - global_position.y, max_tilt, name
-	]))
+	#print("{3} Face {0} from center {1} against threshold {2}".format([
+	#	highest_y, highest_y - global_position.y, max_tilt, name
+	#]))
 	if highest_y - global_position.y < max_tilt:
 		return 0
 	return highest_side

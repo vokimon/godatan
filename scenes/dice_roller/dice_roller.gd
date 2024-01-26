@@ -45,10 +45,10 @@ func _ready():
 		dices.append(dice)
 
 func _on_finnished_dice_rolling(number: int, dice_name: String):
-	print("Roller received dice done ", dice_name, " with ", number)
+	#print("Roller received dice done ", dice_name, " with ", number)
 	result[dice_name] = number
 	if result.size() == dices.size():
-		print("======= ", result)
+		print("======= ", result, " -> ", total_value)
 		roll_finnished.emit(total_value)
 		# TODO: Once the strucutre is more set, connect it better
 		var board = get_tree().root.get_node("Board")
