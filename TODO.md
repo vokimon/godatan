@@ -1,5 +1,7 @@
 # TODO's
 
+- BUG: red number tokens should not be dealed continguous
+
 - Dice Roller: Collect dices and emit final value
 - Dice Roller: Emit dicing (every dice value)
 - Dice Roller: Connecting to the board

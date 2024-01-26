@@ -38,7 +38,6 @@ func _init():
 	stop()
 
 func _ready():
-	print(name, " ready, can_sleep ", can_sleep, " can_process ", can_process())
 	original_position = position
 	mass = dice_density * dice_size ** 3 
 	$Collider.shape.size = dice_size * Vector3.ONE
@@ -54,22 +53,21 @@ func stop():
 	position = original_position
 	position.y = 5 * dice_size
 	rotation = randf_range(0, 2*PI)*Vector3(1.,1.,1.)
-	lock_rotation = true
+	lock_rotation = true # TODO: should not be set?
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 
 func roll():
-	stop()
-	linear_velocity = 10*Vector3(-1,0, -1)
-	angular_velocity = mass * 100. * 2 * PI * Vector3(1,0,1)
+	if position.y < dice_size*2: stop()
+	linear_velocity = Vector3(-1,0, -1)
+	angular_velocity = Vector3.ZERO
 	freeze = false
 	sleeping = false
 	lock_rotation = false
 	roll_time = 0
-	print("Pre impulse: ", linear_velocity, " ", angular_velocity, " ", position)
-	apply_central_impulse(mass * 10. * Vector3(randf_range(-1.,+1.), 0, randf_range(-1.,+1.)))
-	apply_torque_impulse( mass * 100. * 2 * PI * Vector3(1,0,1))
-	print("Impulsed: ", linear_velocity, " ", angular_velocity, " ", position)
+	apply_torque_impulse( dice_size * mass * TAU * Vector3(
+		randf_range(-1.,+1.), 0, randf_range(-1.,+1.)
+	))
 
 func shake(reason: String):
 	"""Move a bad rolled dice"""
@@ -82,11 +80,10 @@ func shake(reason: String):
 func _process(_delta):
 	roll_time += _delta
 	if freeze: return
-#	print("process ", roll_time)
 	if roll_time < 1: return
 	roll_time = 0
 	if position.y < dice_size * .5:
-		print("Dice {0}: Pushing up a bellow ground dice".format([name]))
+		print("Dice {0}: Bellow ground, pushing up".format([name]))
 		apply_impulse(mass * Vector3(0, 1, 0), dice_size/2.*Vector3.ONE)
 	
 	if linear_velocity.length() > dice_size * 0.1:
@@ -119,10 +116,3 @@ func upper_side() -> int:
 	if highest_y - global_position.y < max_tilt:
 		return 0
 	return highest_side
-
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			stop()
-		if not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			roll()
