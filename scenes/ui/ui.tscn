@@ -50,81 +50,85 @@ icon = ExtResource("6_a5mht")
 icon_alignment = 1
 expand_icon = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="ResourceWood" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
+tooltip_text = "Wood"
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceWood"]
 layout_mode = 2
-tooltip_text = "Brick"
-texture = ExtResource("1_4kkjx")
+texture = ExtResource("5_oc4cg")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceWood"]
 layout_mode = 2
 text = "19"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="ResourceBrick" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
+tooltip_text = "Brick"
 
-[node name="TextureRect2" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer2"]
+[node name="TextureRect2" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceBrick"]
 layout_mode = 2
-texture = ExtResource("2_7y382")
+texture = ExtResource("1_4kkjx")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label2" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceBrick"]
 layout_mode = 2
 text = "10
 "
 horizontal_alignment = 1
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="ResourceSheep" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
+tooltip_text = "Sheep"
 
-[node name="TextureRect3" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-texture = ExtResource("3_875i1")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="Label3" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "8
-"
-horizontal_alignment = 1
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
-custom_minimum_size = Vector2(22, 0)
-layout_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer4"]
+[node name="TextureRect3" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceSheep"]
 layout_mode = 2
 texture = ExtResource("4_0pohx")
 expand_mode = 5
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="Label4" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer4"]
+[node name="Label3" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceSheep"]
 layout_mode = 2
 text = "8
 "
 horizontal_alignment = 1
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="ResourceGrain" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
+tooltip_text = "Grain"
 
-[node name="TextureRect5" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer5"]
+[node name="TextureRect4" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceGrain"]
 layout_mode = 2
-texture = ExtResource("5_oc4cg")
+texture = ExtResource("3_875i1")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Label4" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceGrain"]
+layout_mode = 2
+text = "8
+"
+horizontal_alignment = 1
+
+[node name="ResourceStone" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+tooltip_text = "Stone"
+
+[node name="TextureRect5" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceStone"]
+layout_mode = 2
+texture = ExtResource("2_7y382")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="Label5" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/VBoxContainer5"]
+[node name="Label5" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceStone"]
 layout_mode = 2
 text = "8
 "
@@ -147,51 +151,51 @@ icon = ExtResource("7_6a4n0")
 icon_alignment = 1
 expand_icon = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HFlowContainer/PiecesUI/HBoxContainer"]
+[node name="PieceRoad" type="VBoxContainer" parent="HFlowContainer/PiecesUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
+tooltip_text = "Road"
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceRoad"]
 layout_mode = 2
-tooltip_text = "Brick"
 texture = ExtResource("7_ywal6")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/PiecesUI/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceRoad"]
 layout_mode = 2
 text = "19"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HFlowContainer/PiecesUI/HBoxContainer"]
+[node name="PieceTown" type="VBoxContainer" parent="HFlowContainer/PiecesUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
+tooltip_text = "Town"
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/VBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceTown"]
 layout_mode = 2
-tooltip_text = "Brick"
 texture = ExtResource("8_kkatu")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/PiecesUI/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceTown"]
 layout_mode = 2
 text = "5
 "
 horizontal_alignment = 1
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HFlowContainer/PiecesUI/HBoxContainer"]
+[node name="PieceCity" type="VBoxContainer" parent="HFlowContainer/PiecesUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
+tooltip_text = "City"
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/VBoxContainer3"]
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceCity"]
 layout_mode = 2
-tooltip_text = "Brick"
 texture = ExtResource("9_dm0mg")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/PiecesUI/HBoxContainer/VBoxContainer3"]
+[node name="Label" type="Label" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceCity"]
 layout_mode = 2
 text = "4"
 horizontal_alignment = 1
@@ -219,7 +223,6 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/VBoxContainer"]
 layout_mode = 2
-tooltip_text = "Brick"
 texture = ExtResource("7_ywal6")
 expand_mode = 4
 stretch_mode = 5
