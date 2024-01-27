@@ -3,7 +3,7 @@
 - [ ] BUG: red number tokens should not be dealed continguous
 - [ ] BUG: Recover board panning (lost when added ui)
 - [ ] Dice Roller: Speed up rolling
-- [ ] Dice Roller: Block rolling when rolling
+- [x] Dice Roller: Block rolling when rolling
 - [x] Dice Roller: Collect dices and emit final value
 - [ ] Dice Roller: Emit dicing (every dice value)
 - [x] Dice Roller: Connecting to the board
