@@ -11,12 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://d3lw7ucqw4ks5" path="res://tiles/town.svg" id="8_kkatu"]
 [ext_resource type="Texture2D" uid="uid://dmn8cydjnb4ep" path="res://tiles/city.svg" id="9_dm0mg"]
 [ext_resource type="Texture2D" uid="uid://bokvwyhhn2ly4" path="res://tiles/develop.svg" id="10_a85yd"]
-[ext_resource type="PackedScene" uid="uid://cnlssqpge8erk" path="res://scenes/dice_roller/dice_roller.tscn" id="10_y4hu7"]
 [ext_resource type="Texture2D" uid="uid://nwsla1roxktc" path="res://tiles/knigth.svg" id="12_nm1tk"]
 [ext_resource type="Texture2D" uid="uid://b84eov23enjht" path="res://tiles/monopoly.svg" id="13_tnog7"]
 [ext_resource type="Texture2D" uid="uid://k3em4pvwdnaq" path="res://tiles/pleanty.svg" id="14_rwtnn"]
 [ext_resource type="Texture2D" uid="uid://dyr8ypvab322b" path="res://tiles/builder.svg" id="15_q0jgj"]
 [ext_resource type="Texture2D" uid="uid://74yenkc6xp88" path="res://tiles/victory.svg" id="16_0gxwd"]
+[ext_resource type="PackedScene" uid="uid://dka188l04khpq" path="res://scenes/dice_roller/dice_roller_control.tscn" id="18_k0imy"]
 
 [node name="ui" type="Control"]
 layout_mode = 3
@@ -311,15 +311,9 @@ layout_mode = 2
 layout_mode = 2
 text = "Roll"
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="HFlowContainer/PanelContainer/HBoxContainer"]
+[node name="DiceRollerControl" parent="HFlowContainer/PanelContainer/HBoxContainer" instance=ExtResource("18_k0imy")]
 layout_mode = 2
-
-[node name="SubViewport" type="SubViewport" parent="HFlowContainer/PanelContainer/HBoxContainer/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(100, 50)
-render_target_update_mode = 4
-
-[node name="DiceRoller" parent="HFlowContainer/PanelContainer/HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("10_y4hu7")]
+stretch = false
 
 [node name="Spanner5" type="Control" parent="HFlowContainer"]
 layout_mode = 2
