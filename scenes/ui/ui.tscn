@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://v3pmw5xuvu0v"]
+[gd_scene load_steps=18 format=3 uid="uid://v3pmw5xuvu0v"]
 
 [ext_resource type="Texture2D" uid="uid://cn2knnhgibxje" path="res://tiles/brick.svg" id="1_4kkjx"]
 [ext_resource type="Texture2D" uid="uid://bhqeysyw77fnn" path="res://tiles/stone.svg" id="2_7y382"]
@@ -12,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://dmn8cydjnb4ep" path="res://tiles/city.svg" id="9_dm0mg"]
 [ext_resource type="Texture2D" uid="uid://bokvwyhhn2ly4" path="res://tiles/develop.svg" id="10_a85yd"]
 [ext_resource type="PackedScene" uid="uid://cnlssqpge8erk" path="res://scenes/dice_roller/dice_roller.tscn" id="10_y4hu7"]
+[ext_resource type="Texture2D" uid="uid://nwsla1roxktc" path="res://tiles/knigth.svg" id="12_nm1tk"]
+[ext_resource type="Texture2D" uid="uid://b84eov23enjht" path="res://tiles/monopoly.svg" id="13_tnog7"]
+[ext_resource type="Texture2D" uid="uid://k3em4pvwdnaq" path="res://tiles/pleanty.svg" id="14_rwtnn"]
+[ext_resource type="Texture2D" uid="uid://dyr8ypvab322b" path="res://tiles/builder.svg" id="15_q0jgj"]
+[ext_resource type="Texture2D" uid="uid://74yenkc6xp88" path="res://tiles/victory.svg" id="16_0gxwd"]
 
 [node name="ui" type="Control"]
 layout_mode = 3
@@ -217,19 +222,79 @@ icon = ExtResource("10_a85yd")
 icon_alignment = 1
 expand_icon = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+[node name="DevelVictory" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelVictory"]
 layout_mode = 2
-texture = ExtResource("7_ywal6")
+texture = ExtResource("16_0gxwd")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/VBoxContainer"]
+[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelVictory"]
 layout_mode = 2
-text = "19"
+text = "0"
+horizontal_alignment = 1
+
+[node name="DevelKnights" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelKnights"]
+layout_mode = 2
+texture = ExtResource("12_nm1tk")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelKnights"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="DevelMonopoly" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelMonopoly"]
+layout_mode = 2
+texture = ExtResource("13_tnog7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelMonopoly"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="DevilPleanty" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevilPleanty"]
+layout_mode = 2
+texture = ExtResource("14_rwtnn")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevilPleanty"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="DevelBuilder" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelBuilder"]
+layout_mode = 2
+texture = ExtResource("15_q0jgj")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelBuilder"]
+layout_mode = 2
+text = "0"
 horizontal_alignment = 1
 
 [node name="Spanner4" type="Control" parent="HFlowContainer"]

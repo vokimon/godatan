@@ -1,7 +1,7 @@
 # TODO's
 
-- BUG: red number tokens should not be dealed continguous
-
+- [ ] BUG: red number tokens should not be dealed continguous
+- [ ] BUG: Recover board panning (lost when added ui)
 - [ ] Dice Roller: Speed up rolling
 - [ ] Dice Roller: Block rolling when rolling
 - [x] Dice Roller: Collect dices and emit final value
@@ -12,13 +12,14 @@
 - [ ] Dice Roller: Mark dices when stopped
 - [ ] Dice Roller: Mark dices when shaked
 
-- [ ] Icons for standard development cards
+- [x] Icons for standard development cards
 - [ ] Robber piece
 - [ ] UI: Show own score
 - [ ] UI: Show other players hidden hand
 - [ ] UI: Offering trade dialog
-- [ ] UI: Robbing resources
 - [ ] UI: Accepting trade dialog
+- [ ] UI: Robbed resources dialog
+- [ ] UI: Choosing Robbed 
 - [ ] Defining Phases and interactivity for each
 - [ ] Board: selecting one of filtered positions: (tiles, sides, corners)
 - [ ] Connecting to Pioneers Server
@@ -31,5 +32,22 @@
     - [ ] Crew piece
     - [ ] Species piece
 
+
+Interactions:
+
+- Roll
+- Deal resources
+- Build road/town/city
+    - Place road
+    - Place town/city
+- Buy devel
+- Offer Trade
+- Accept/Deny Trade
+- Choose Robbed resources
+- Choose Robber Location
+- Choose Robbed player
+- Play development card
+- Choose pleanty year resources
+- Choose monopoly resource
 
 
