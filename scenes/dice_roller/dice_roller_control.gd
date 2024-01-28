@@ -3,12 +3,14 @@
 extends SubViewportContainer
 class_name DiceRollerControl
 
+signal roll_finnished(int)
 
-# Called when the node enters the scene tree for the first time.
+func roll():
+	$SubViewport/DiceRoller.roll()
+
 func _ready():
-	pass # Replace with function body.
+	$SubViewport/DiceRoller.roll_finnished.connect(func(value): roll_finnished.emit(value))
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
