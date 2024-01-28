@@ -9,8 +9,9 @@ func roll():
 	$SubViewport/DiceRoller.roll()
 
 func _ready():
-	$SubViewport/DiceRoller.roll_finnished.connect(func(value): roll_finnished.emit(value))
-
+	$SubViewport/DiceRoller.roll_finnished.connect(
+		func(value): roll_finnished.emit(value)
+	)
 
 func _process(_delta):
 	pass

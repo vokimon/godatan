@@ -10,6 +10,10 @@ const DiceScene = preload("./dice.tscn")
 		'color': Color.GOLDENROD,
 	},
 }
+const roller_width := 10
+const roller_height := 8
+const launch_height := Dice.dice_size * 5.
+
 var dices := []
 var result := {}
 var rolling := false
@@ -33,18 +37,27 @@ func prepare():
 	for dice in dices:
 		dice.stop()
 
-func _ready():
-	const launch_height := Dice.dice_size * 5.
-	var dice_x := -(dice_definitions.size()-1)/2.
+func _init():
 	for dice_name: String in dice_definitions:
-		var dice = DiceScene.instantiate()
-		dice.name = dice_name
-		dice.dice_color = dice_definitions[dice_name].color
-		dice.position = Vector3(dice_x*Dice.dice_size*1.3, launch_height, 0.)
-		dice_x += 1
-		dice.roll_finished.connect(_on_finnished_dice_rolling.bind(dice_name))
-		add_child(dice)
-		dices.append(dice)
+		add_dice(dice_name, dice_definitions[dice_name].color)
+	reposition_dices()
+
+func add_dice(dice_name, dice_color):
+	var dice = DiceScene.instantiate()
+	dice.name = dice_name
+	dice.dice_color = dice_definitions[dice_name].color
+	dice.roll_finished.connect(_on_finnished_dice_rolling.bind(dice_name))
+	add_child(dice)
+	dices.append(dice)
+
+func reposition_dices():
+	const margin = 1.
+	const span = roller_width - margin * 2
+	var dice_interval = span/2./dices.size()
+	var dice_x = -span/2. + dice_interval
+	for dice in dices:
+		dice.position = Vector3(dice_x, launch_height, 0.0)
+		dice_x += dice_interval*2
 
 func _on_finnished_dice_rolling(number: int, dice_name: String):
 	#print("Roller received dice done ", dice_name, " with ", number)
