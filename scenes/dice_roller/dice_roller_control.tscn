@@ -4,16 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://cnlssqpge8erk" path="res://scenes/dice_roller/dice_roller.tscn" id="2_lyhe4"]
 
 [node name="Control" type="SubViewportContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(100, 50)
+size_flags_horizontal = 0
 script = ExtResource("1_hbdfx")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
-size = Vector2i(100, 50)
+size = Vector2i(75, 50)
+size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="DiceRoller" parent="SubViewport" instance=ExtResource("2_lyhe4")]

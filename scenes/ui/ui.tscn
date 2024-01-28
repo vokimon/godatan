@@ -313,7 +313,6 @@ text = "Roll"
 
 [node name="DiceRollerControl" parent="HFlowContainer/PanelContainer/HBoxContainer" instance=ExtResource("18_k0imy")]
 layout_mode = 2
-stretch = false
 
 [node name="Spanner5" type="Control" parent="HFlowContainer"]
 layout_mode = 2

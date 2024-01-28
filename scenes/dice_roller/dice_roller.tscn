@@ -33,8 +33,13 @@ script = ExtResource("1_h46j8")
 metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.946559, -0.0527161, 0.318194, -0.234127, 0.566242, 0.790287, -0.221836, -0.822551, 0.523639, -0.796691, 1.39296, 4.93059)
+transform = Transform3D(0.926054, -0.0217188, -0.376766, 0.364029, 0.314711, 0.876607, 0.0995334, -0.948939, 0.299345, -8.21153, 11.2586, 4.93059)
+light_color = Color(0.619608, 0.643137, 0.729412, 1)
 shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.310866, -0.454348, 0.834823, 0.158551, 0.890824, 0.425786, -0.937136, 2.96294e-08, 0.348965, 7.01433, 9.25399, 0)
+light_color = Color(0.745098, 0.537255, 1, 1)
 
 [node name="OverCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0)
