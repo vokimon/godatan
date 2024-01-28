@@ -54,8 +54,8 @@ func _on_finnished_dice_rolling(number: int, dice_name: String):
 		print("======= ", result, " -> ", total_value)
 		roll_finnished.emit(total_value)
 		# TODO: Once the strucutre is more set, connect it better
-		var board = get_tree().root.get_node("Board")
-		board and board.dice_rolled(total_value)
+		var board = get_tree().root.get_node_or_null("Board")
+		if board: board.dice_rolled(total_value)
 
 func _input(event: InputEvent) -> void:
 	if rolling: return

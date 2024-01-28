@@ -1,5 +1,6 @@
 # TODO's
 
+- [ ] Dice Roller: Expandable control (not fixed size)
 - [ ] BUG: red number tokens should not be dealed continguous
 - [ ] BUG: Recover board panning (lost when added ui)
 - [ ] Dice Roller: Speed up rolling
