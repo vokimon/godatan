@@ -35,7 +35,6 @@ func _init():
 	can_sleep = true
 	gravity_scale = 10
 	freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
-	stop()
 
 func _ready():
 	original_position = position
@@ -48,6 +47,7 @@ func _ready():
 	stop()
 
 func stop():
+	$DiceMesh/Outline.visible = false
 	freeze = true
 	sleeping = true
 	position = original_position
@@ -102,6 +102,8 @@ func _process(_delta):
 	sleeping = true
 	rolling = false
 	roll_finished.emit(side)
+	$DiceMesh/Outline.visible = true
+	position.y+=.2 # avoids outline to intersect floor
 
 func upper_side() -> int:
 	var highest_y := -INF
