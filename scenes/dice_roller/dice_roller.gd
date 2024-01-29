@@ -16,6 +16,7 @@ const launch_height := Dice.dice_size * 5.
 
 var dices := []
 var result := {}
+## Wheter the dices are rolling
 var rolling := false
 
 signal roll_finnished(value: int)
@@ -60,15 +61,15 @@ func reposition_dices():
 		dice_x += dice_interval*2
 
 func _on_finnished_dice_rolling(number: int, dice_name: String):
-	#print("Roller received dice done ", dice_name, " with ", number)
 	result[dice_name] = number
-	if result.size() == dices.size():
-		rolling = false
-		print("======= ", result, " -> ", total_value)
-		roll_finnished.emit(total_value)
-		# TODO: Once the strucutre is more set, connect it better
-		var board = get_tree().root.get_node_or_null("Board")
-		if board: board.dice_rolled(total_value)
+	if result.size() < dices.size():
+		return
+	rolling = false
+	print("======= ", result, " -> ", total_value)
+	roll_finnished.emit(total_value)
+	# TODO: Once the strucutre is more set, connect it better
+	var board = get_tree().root.get_node_or_null("Board")
+	if board: board.dice_rolled(total_value)
 
 func _input(event: InputEvent) -> void:
 	if rolling: return
