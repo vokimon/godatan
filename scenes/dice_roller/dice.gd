@@ -1,4 +1,4 @@
-@icon("res://tiles/icon.png")
+@icon("res://images/icon.png")
 class_name Dice
 extends RigidBody3D
 

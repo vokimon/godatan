@@ -1,17 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://cpqgcxm5wmtqk"]
 
 [ext_resource type="Script" path="res://scenes/dice_roller/dice.gd" id="1_68wp2"]
-[ext_resource type="Texture2D" uid="uid://c3cpwpc7bvv82" path="res://tiles/dice_texture.svg" id="2_fttwd"]
-[ext_resource type="Texture2D" uid="uid://do3xsddtldsbe" path="res://tiles/dice_normal_map.png" id="3_sdr1i"]
+[ext_resource type="Texture2D" uid="uid://c3cpwpc7bvv82" path="res://images/dice_texture.svg" id="2_e47ja"]
+[ext_resource type="Texture2D" uid="uid://do3xsddtldsbe" path="res://images/dice_normal_map.png" id="3_itb1g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p4nd"]
 size = Vector3(2, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2vue"]
-albedo_texture = ExtResource("2_fttwd")
+albedo_texture = ExtResource("2_e47ja")
 normal_enabled = true
-normal_texture = ExtResource("3_sdr1i")
-heightmap_texture = ExtResource("2_fttwd")
+normal_texture = ExtResource("3_itb1g")
+heightmap_texture = ExtResource("2_e47ja")
 
 [sub_resource type="BoxMesh" id="BoxMesh_fxv3q"]
 lightmap_size_hint = Vector2i(24, 36)

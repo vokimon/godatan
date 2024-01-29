@@ -1,21 +1,21 @@
 [gd_scene load_steps=18 format=3 uid="uid://v3pmw5xuvu0v"]
 
-[ext_resource type="Texture2D" uid="uid://cn2knnhgibxje" path="res://tiles/brick.svg" id="1_4kkjx"]
-[ext_resource type="Texture2D" uid="uid://bhqeysyw77fnn" path="res://tiles/stone.svg" id="2_7y382"]
-[ext_resource type="Texture2D" uid="uid://jivt8rr3qpxp" path="res://tiles/grain.svg" id="3_875i1"]
-[ext_resource type="Texture2D" uid="uid://k3k1dnhns6c5" path="res://tiles/sheep.svg" id="4_0pohx"]
-[ext_resource type="Texture2D" uid="uid://c5m0dmcpwybjj" path="res://tiles/wood.svg" id="5_oc4cg"]
-[ext_resource type="Texture2D" uid="uid://cybuxui5imlv1" path="res://tiles/trade.svg" id="6_a5mht"]
-[ext_resource type="Texture2D" uid="uid://dakea1arx50wf" path="res://tiles/build.svg" id="7_6a4n0"]
-[ext_resource type="Texture2D" uid="uid://7mnfflv16o80" path="res://tiles/road.svg" id="7_ywal6"]
-[ext_resource type="Texture2D" uid="uid://d3lw7ucqw4ks5" path="res://tiles/town.svg" id="8_kkatu"]
-[ext_resource type="Texture2D" uid="uid://dmn8cydjnb4ep" path="res://tiles/city.svg" id="9_dm0mg"]
-[ext_resource type="Texture2D" uid="uid://bokvwyhhn2ly4" path="res://tiles/develop.svg" id="10_a85yd"]
-[ext_resource type="Texture2D" uid="uid://nwsla1roxktc" path="res://tiles/knigth.svg" id="12_nm1tk"]
-[ext_resource type="Texture2D" uid="uid://b84eov23enjht" path="res://tiles/monopoly.svg" id="13_tnog7"]
-[ext_resource type="Texture2D" uid="uid://k3em4pvwdnaq" path="res://tiles/pleanty.svg" id="14_rwtnn"]
-[ext_resource type="Texture2D" uid="uid://dyr8ypvab322b" path="res://tiles/builder.svg" id="15_q0jgj"]
-[ext_resource type="Texture2D" uid="uid://74yenkc6xp88" path="res://tiles/victory.svg" id="16_0gxwd"]
+[ext_resource type="Texture2D" uid="uid://cybuxui5imlv1" path="res://images/trade.svg" id="1_ggaj7"]
+[ext_resource type="Texture2D" uid="uid://c5m0dmcpwybjj" path="res://images/wood.svg" id="2_pgeci"]
+[ext_resource type="Texture2D" uid="uid://cn2knnhgibxje" path="res://images/brick.svg" id="3_b5tv0"]
+[ext_resource type="Texture2D" uid="uid://k3k1dnhns6c5" path="res://images/sheep.svg" id="4_lkj3e"]
+[ext_resource type="Texture2D" uid="uid://jivt8rr3qpxp" path="res://images/grain.svg" id="5_2huid"]
+[ext_resource type="Texture2D" uid="uid://bhqeysyw77fnn" path="res://images/stone.svg" id="6_wcad8"]
+[ext_resource type="Texture2D" uid="uid://dakea1arx50wf" path="res://images/build.svg" id="7_2lx0p"]
+[ext_resource type="Texture2D" uid="uid://7mnfflv16o80" path="res://images/road.svg" id="8_f0sp4"]
+[ext_resource type="Texture2D" uid="uid://d3lw7ucqw4ks5" path="res://images/town.svg" id="9_508qg"]
+[ext_resource type="Texture2D" uid="uid://dmn8cydjnb4ep" path="res://images/city.svg" id="10_t5ngp"]
+[ext_resource type="Texture2D" uid="uid://bokvwyhhn2ly4" path="res://images/develop.svg" id="11_gcyru"]
+[ext_resource type="Texture2D" uid="uid://74yenkc6xp88" path="res://images/victory.svg" id="12_mir2y"]
+[ext_resource type="Texture2D" uid="uid://nwsla1roxktc" path="res://images/knigth.svg" id="13_3yglp"]
+[ext_resource type="Texture2D" uid="uid://b84eov23enjht" path="res://images/monopoly.svg" id="14_wrr3e"]
+[ext_resource type="Texture2D" uid="uid://k3em4pvwdnaq" path="res://images/pleanty.svg" id="15_puwgj"]
+[ext_resource type="Texture2D" uid="uid://dyr8ypvab322b" path="res://images/builder.svg" id="16_ku5s3"]
 [ext_resource type="PackedScene" uid="uid://dka188l04khpq" path="res://scenes/dice_roller/dice_roller_control.tscn" id="18_k0imy"]
 
 [node name="ui" type="Control"]
@@ -51,7 +51,7 @@ layout_mode = 2
 layout_mode = 2
 disabled = true
 text = "Trade"
-icon = ExtResource("6_a5mht")
+icon = ExtResource("1_ggaj7")
 icon_alignment = 1
 expand_icon = true
 
@@ -62,7 +62,7 @@ tooltip_text = "Wood"
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceWood"]
 layout_mode = 2
-texture = ExtResource("5_oc4cg")
+texture = ExtResource("2_pgeci")
 expand_mode = 4
 stretch_mode = 5
 
@@ -78,7 +78,7 @@ tooltip_text = "Brick"
 
 [node name="TextureRect2" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceBrick"]
 layout_mode = 2
-texture = ExtResource("1_4kkjx")
+texture = ExtResource("3_b5tv0")
 expand_mode = 4
 stretch_mode = 5
 
@@ -95,7 +95,7 @@ tooltip_text = "Sheep"
 
 [node name="TextureRect3" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceSheep"]
 layout_mode = 2
-texture = ExtResource("4_0pohx")
+texture = ExtResource("4_lkj3e")
 expand_mode = 5
 stretch_mode = 5
 
@@ -112,7 +112,7 @@ tooltip_text = "Grain"
 
 [node name="TextureRect4" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceGrain"]
 layout_mode = 2
-texture = ExtResource("3_875i1")
+texture = ExtResource("5_2huid")
 expand_mode = 5
 stretch_mode = 4
 
@@ -129,7 +129,7 @@ tooltip_text = "Stone"
 
 [node name="TextureRect5" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceStone"]
 layout_mode = 2
-texture = ExtResource("2_7y382")
+texture = ExtResource("6_wcad8")
 expand_mode = 5
 stretch_mode = 5
 
@@ -152,7 +152,7 @@ layout_mode = 2
 [node name="Button" type="Button" parent="HFlowContainer/PiecesUI/HBoxContainer"]
 layout_mode = 2
 text = "Build"
-icon = ExtResource("7_6a4n0")
+icon = ExtResource("7_2lx0p")
 icon_alignment = 1
 expand_icon = true
 
@@ -163,7 +163,7 @@ tooltip_text = "Road"
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceRoad"]
 layout_mode = 2
-texture = ExtResource("7_ywal6")
+texture = ExtResource("8_f0sp4")
 expand_mode = 4
 stretch_mode = 5
 
@@ -179,7 +179,7 @@ tooltip_text = "Town"
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceTown"]
 layout_mode = 2
-texture = ExtResource("8_kkatu")
+texture = ExtResource("9_508qg")
 expand_mode = 4
 stretch_mode = 5
 
@@ -196,7 +196,7 @@ tooltip_text = "City"
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceCity"]
 layout_mode = 2
-texture = ExtResource("9_dm0mg")
+texture = ExtResource("10_t5ngp")
 expand_mode = 4
 stretch_mode = 5
 
@@ -218,7 +218,7 @@ layout_mode = 2
 [node name="DevelopmentButton" type="Button" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
 layout_mode = 2
 text = "Devel"
-icon = ExtResource("10_a85yd")
+icon = ExtResource("11_gcyru")
 icon_alignment = 1
 expand_icon = true
 
@@ -228,7 +228,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelVictory"]
 layout_mode = 2
-texture = ExtResource("16_0gxwd")
+texture = ExtResource("12_mir2y")
 expand_mode = 4
 stretch_mode = 5
 
@@ -243,7 +243,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelKnights"]
 layout_mode = 2
-texture = ExtResource("12_nm1tk")
+texture = ExtResource("13_3yglp")
 expand_mode = 4
 stretch_mode = 5
 
@@ -258,7 +258,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelMonopoly"]
 layout_mode = 2
-texture = ExtResource("13_tnog7")
+texture = ExtResource("14_wrr3e")
 expand_mode = 4
 stretch_mode = 5
 
@@ -273,7 +273,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevilPleanty"]
 layout_mode = 2
-texture = ExtResource("14_rwtnn")
+texture = ExtResource("15_puwgj")
 expand_mode = 4
 stretch_mode = 5
 
@@ -288,7 +288,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelBuilder"]
 layout_mode = 2
-texture = ExtResource("15_q0jgj")
+texture = ExtResource("16_ku5s3")
 expand_mode = 4
 stretch_mode = 5
 

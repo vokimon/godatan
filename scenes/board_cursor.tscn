@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkcvhd707mnhm"]
 
 [ext_resource type="Script" path="res://scenes/board_cursor.gd" id="1_nef7p"]
-[ext_resource type="Texture2D" uid="uid://by1kstxkxx1rk" path="res://tiles/icon.svg" id="1_wii6r"]
+[ext_resource type="Texture2D" uid="uid://by1kstxkxx1rk" path="res://images/icon.svg" id="1_wii6r"]
 
 [sub_resource type="Animation" id="Animation_nxfxy"]
 resource_name = "blink"

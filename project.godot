@@ -13,7 +13,7 @@ config_version=5
 config/name="Cingara"
 run/main_scene="res://scenes/board.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://tiles/icon.svg"
+config/icon="res://images/icon.svg"
 
 [autoload]
 

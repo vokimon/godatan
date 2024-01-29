@@ -1,5 +1,5 @@
 ## A Control holding an actionable Dice Roller
-@icon("res://tiles/dice_roller_controller.svg")
+@icon("res://images/dice_roller_controller.svg")
 extends SubViewportContainer
 class_name DiceRollerControl
 

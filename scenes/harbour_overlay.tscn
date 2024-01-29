@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0llo01rjqh3j"]
 
 [ext_resource type="Script" path="res://scenes/harbour_overlay.gd" id="1_45hf5"]
-[ext_resource type="Texture2D" uid="uid://duoxkwaesrhok" path="res://tiles/harbour.svg" id="1_unv30"]
+[ext_resource type="Texture2D" uid="uid://duoxkwaesrhok" path="res://images/harbour.svg" id="1_unv30"]
 [ext_resource type="Script" path="res://scenes/interactive_camera_2d.gd" id="3_3pqx1"]
 
 [node name="HarbourOverlay" type="Node2D"]
