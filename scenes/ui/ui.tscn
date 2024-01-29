@@ -18,16 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dyr8ypvab322b" path="res://images/builder.svg" id="16_ku5s3"]
 [ext_resource type="PackedScene" uid="uid://dka188l04khpq" path="res://scenes/dice_roller/dice_roller_control.tscn" id="18_k0imy"]
 
-[node name="ui" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HFlowContainer" type="HFlowContainer" parent="."]
-layout_mode = 1
+[node name="HFlowContainer" type="HFlowContainer"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -36,18 +27,18 @@ offset_top = -49.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Spanner" type="Control" parent="HFlowContainer"]
+[node name="Spanner" type="Control" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResourceUI" type="PanelContainer" parent="HFlowContainer"]
+[node name="ResourceUI" type="PanelContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HFlowContainer/ResourceUI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ResourceUI"]
 layout_direction = 2
 layout_mode = 2
 
-[node name="TradeButton" type="Button" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="TradeButton" type="Button" parent="ResourceUI/HBoxContainer"]
 layout_mode = 2
 disabled = true
 text = "Trade"
@@ -55,265 +46,265 @@ icon = ExtResource("1_ggaj7")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ResourceWood" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="ResourceWood" type="VBoxContainer" parent="ResourceUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 tooltip_text = "Wood"
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceWood"]
+[node name="TextureRect" type="TextureRect" parent="ResourceUI/HBoxContainer/ResourceWood"]
 layout_mode = 2
 texture = ExtResource("2_pgeci")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceWood"]
+[node name="Label" type="Label" parent="ResourceUI/HBoxContainer/ResourceWood"]
 layout_mode = 2
 text = "19"
 horizontal_alignment = 1
 
-[node name="ResourceBrick" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="ResourceBrick" type="VBoxContainer" parent="ResourceUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 tooltip_text = "Brick"
 
-[node name="TextureRect2" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceBrick"]
+[node name="TextureRect2" type="TextureRect" parent="ResourceUI/HBoxContainer/ResourceBrick"]
 layout_mode = 2
 texture = ExtResource("3_b5tv0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label2" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceBrick"]
+[node name="Label2" type="Label" parent="ResourceUI/HBoxContainer/ResourceBrick"]
 layout_mode = 2
 text = "10
 "
 horizontal_alignment = 1
 
-[node name="ResourceSheep" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="ResourceSheep" type="VBoxContainer" parent="ResourceUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 tooltip_text = "Sheep"
 
-[node name="TextureRect3" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceSheep"]
+[node name="TextureRect3" type="TextureRect" parent="ResourceUI/HBoxContainer/ResourceSheep"]
 layout_mode = 2
 texture = ExtResource("4_lkj3e")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="Label3" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceSheep"]
+[node name="Label3" type="Label" parent="ResourceUI/HBoxContainer/ResourceSheep"]
 layout_mode = 2
 text = "8
 "
 horizontal_alignment = 1
 
-[node name="ResourceGrain" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="ResourceGrain" type="VBoxContainer" parent="ResourceUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 tooltip_text = "Grain"
 
-[node name="TextureRect4" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceGrain"]
+[node name="TextureRect4" type="TextureRect" parent="ResourceUI/HBoxContainer/ResourceGrain"]
 layout_mode = 2
 texture = ExtResource("5_2huid")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="Label4" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceGrain"]
+[node name="Label4" type="Label" parent="ResourceUI/HBoxContainer/ResourceGrain"]
 layout_mode = 2
 text = "8
 "
 horizontal_alignment = 1
 
-[node name="ResourceStone" type="VBoxContainer" parent="HFlowContainer/ResourceUI/HBoxContainer"]
+[node name="ResourceStone" type="VBoxContainer" parent="ResourceUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 tooltip_text = "Stone"
 
-[node name="TextureRect5" type="TextureRect" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceStone"]
+[node name="TextureRect5" type="TextureRect" parent="ResourceUI/HBoxContainer/ResourceStone"]
 layout_mode = 2
 texture = ExtResource("6_wcad8")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="Label5" type="Label" parent="HFlowContainer/ResourceUI/HBoxContainer/ResourceStone"]
+[node name="Label5" type="Label" parent="ResourceUI/HBoxContainer/ResourceStone"]
 layout_mode = 2
 text = "8
 "
 horizontal_alignment = 1
 
-[node name="Spanner2" type="Control" parent="HFlowContainer"]
+[node name="Spanner2" type="Control" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PiecesUI" type="PanelContainer" parent="HFlowContainer"]
+[node name="PiecesUI" type="PanelContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HFlowContainer/PiecesUI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PiecesUI"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HFlowContainer/PiecesUI/HBoxContainer"]
+[node name="Button" type="Button" parent="PiecesUI/HBoxContainer"]
 layout_mode = 2
 text = "Build"
 icon = ExtResource("7_2lx0p")
 icon_alignment = 1
 expand_icon = true
 
-[node name="PieceRoad" type="VBoxContainer" parent="HFlowContainer/PiecesUI/HBoxContainer"]
+[node name="PieceRoad" type="VBoxContainer" parent="PiecesUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 tooltip_text = "Road"
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceRoad"]
+[node name="TextureRect" type="TextureRect" parent="PiecesUI/HBoxContainer/PieceRoad"]
 layout_mode = 2
 texture = ExtResource("8_f0sp4")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceRoad"]
+[node name="Label" type="Label" parent="PiecesUI/HBoxContainer/PieceRoad"]
 layout_mode = 2
 text = "19"
 horizontal_alignment = 1
 
-[node name="PieceTown" type="VBoxContainer" parent="HFlowContainer/PiecesUI/HBoxContainer"]
+[node name="PieceTown" type="VBoxContainer" parent="PiecesUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 tooltip_text = "Town"
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceTown"]
+[node name="TextureRect" type="TextureRect" parent="PiecesUI/HBoxContainer/PieceTown"]
 layout_mode = 2
 texture = ExtResource("9_508qg")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceTown"]
+[node name="Label" type="Label" parent="PiecesUI/HBoxContainer/PieceTown"]
 layout_mode = 2
 text = "5
 "
 horizontal_alignment = 1
 
-[node name="PieceCity" type="VBoxContainer" parent="HFlowContainer/PiecesUI/HBoxContainer"]
+[node name="PieceCity" type="VBoxContainer" parent="PiecesUI/HBoxContainer"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 tooltip_text = "City"
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceCity"]
+[node name="TextureRect" type="TextureRect" parent="PiecesUI/HBoxContainer/PieceCity"]
 layout_mode = 2
 texture = ExtResource("10_t5ngp")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/PiecesUI/HBoxContainer/PieceCity"]
+[node name="Label" type="Label" parent="PiecesUI/HBoxContainer/PieceCity"]
 layout_mode = 2
 text = "4"
 horizontal_alignment = 1
 
-[node name="Spanner3" type="Control" parent="HFlowContainer"]
+[node name="Spanner3" type="Control" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DevelopUI" type="PanelContainer" parent="HFlowContainer"]
+[node name="DevelopUI" type="PanelContainer" parent="."]
 layout_mode = 2
 
-[node name="DevelopmentCardsUI" type="HBoxContainer" parent="HFlowContainer/DevelopUI"]
+[node name="DevelopmentCardsUI" type="HBoxContainer" parent="DevelopUI"]
 layout_mode = 2
 
-[node name="DevelopmentButton" type="Button" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+[node name="DevelopmentButton" type="Button" parent="DevelopUI/DevelopmentCardsUI"]
 layout_mode = 2
 text = "Devel"
 icon = ExtResource("11_gcyru")
 icon_alignment = 1
 expand_icon = true
 
-[node name="DevelVictory" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+[node name="DevelVictory" type="VBoxContainer" parent="DevelopUI/DevelopmentCardsUI"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelVictory"]
+[node name="TextureRect" type="TextureRect" parent="DevelopUI/DevelopmentCardsUI/DevelVictory"]
 layout_mode = 2
 texture = ExtResource("12_mir2y")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelVictory"]
+[node name="Label" type="Label" parent="DevelopUI/DevelopmentCardsUI/DevelVictory"]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="DevelKnights" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+[node name="DevelKnights" type="VBoxContainer" parent="DevelopUI/DevelopmentCardsUI"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelKnights"]
+[node name="TextureRect" type="TextureRect" parent="DevelopUI/DevelopmentCardsUI/DevelKnights"]
 layout_mode = 2
 texture = ExtResource("13_3yglp")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelKnights"]
+[node name="Label" type="Label" parent="DevelopUI/DevelopmentCardsUI/DevelKnights"]
 layout_mode = 2
 text = "1"
 horizontal_alignment = 1
 
-[node name="DevelMonopoly" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+[node name="DevelMonopoly" type="VBoxContainer" parent="DevelopUI/DevelopmentCardsUI"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelMonopoly"]
+[node name="TextureRect" type="TextureRect" parent="DevelopUI/DevelopmentCardsUI/DevelMonopoly"]
 layout_mode = 2
 texture = ExtResource("14_wrr3e")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelMonopoly"]
+[node name="Label" type="Label" parent="DevelopUI/DevelopmentCardsUI/DevelMonopoly"]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="DevilPleanty" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+[node name="DevilPleanty" type="VBoxContainer" parent="DevelopUI/DevelopmentCardsUI"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevilPleanty"]
+[node name="TextureRect" type="TextureRect" parent="DevelopUI/DevelopmentCardsUI/DevilPleanty"]
 layout_mode = 2
 texture = ExtResource("15_puwgj")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevilPleanty"]
+[node name="Label" type="Label" parent="DevelopUI/DevelopmentCardsUI/DevilPleanty"]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="DevelBuilder" type="VBoxContainer" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI"]
+[node name="DevelBuilder" type="VBoxContainer" parent="DevelopUI/DevelopmentCardsUI"]
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelBuilder"]
+[node name="TextureRect" type="TextureRect" parent="DevelopUI/DevelopmentCardsUI/DevelBuilder"]
 layout_mode = 2
 texture = ExtResource("16_ku5s3")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HFlowContainer/DevelopUI/DevelopmentCardsUI/DevelBuilder"]
+[node name="Label" type="Label" parent="DevelopUI/DevelopmentCardsUI/DevelBuilder"]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Spanner4" type="Control" parent="HFlowContainer"]
+[node name="Spanner4" type="Control" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="HFlowContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HFlowContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="RollButton" type="Button" parent="HFlowContainer/PanelContainer/HBoxContainer"]
+[node name="RollButton" type="Button" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 text = "Roll"
 
-[node name="DiceRollerControl" parent="HFlowContainer/PanelContainer/HBoxContainer" instance=ExtResource("18_k0imy")]
+[node name="DiceRollerControl" parent="PanelContainer/HBoxContainer" instance=ExtResource("18_k0imy")]
 layout_mode = 2
 
-[node name="Spanner5" type="Control" parent="HFlowContainer"]
+[node name="Spanner5" type="Control" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3

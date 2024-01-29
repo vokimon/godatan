@@ -3,7 +3,7 @@
 - [ ] BUG: red number tokens should not be dealed continguous
 - [ ] BUG: Recover board panning (lost when added ui)
 - [x] Dice Roller: Expandable control (not fixed size)
-- [ ] Dice Roller: Adding dynamicly dices
+- [x] Dice Roller: Adding dynamicly dices
 - [ ] Dice Roller: Speed up rolling
 - [x] Dice Roller: Block rolling when rolling
 - [x] Dice Roller: Collect dices and emit final value
