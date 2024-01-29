@@ -78,3 +78,8 @@ func _input(event: InputEvent) -> void:
 			prepare()
 		if not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			roll()
+
+func show_faces(faces: Array):
+	"""Shows given faces by rotating them up"""
+	for i in range(faces.size()):
+		dices[i].show_face(faces[i])

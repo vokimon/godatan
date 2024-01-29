@@ -119,3 +119,15 @@ func upper_side() -> int:
 	if highest_y - global_position.y < max_tilt:
 		return 0
 	return highest_side
+
+func show_face(value):
+	"""Shows a given face by rotating it up"""
+	if value not in sides: return
+	var face_normal = (to_global(sides[value])-global_position).normalized()
+	print(name, " face normal ", face_normal, " ", value)
+	var cross = face_normal.cross(Vector3.UP).normalized()
+	var angle = face_normal.angle_to(Vector3.UP)
+	print(name, " ", cross, " ", angle)
+	#create_tween().tween_property(self, "rotation", 2, 5)
+	rotate(cross, angle)
+	
