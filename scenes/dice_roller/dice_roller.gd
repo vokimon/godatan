@@ -1,3 +1,4 @@
+@icon("res://images/dice_roller.png")
 extends Node3D
 class_name DiceRoller
 const DiceScene = preload("./dice.tscn")
